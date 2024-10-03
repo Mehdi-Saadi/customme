@@ -7,7 +7,13 @@ export default {
         "./src/**/*.{vue,js,ts,jsx,tsx}",
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                rose: {
+                    750: '#a72f3b',
+                },
+            },
+        },
     },
     plugins: [formsPlugin],
 };
