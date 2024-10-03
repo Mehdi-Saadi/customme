@@ -58,9 +58,7 @@ const socialLinks = [
             <!-- social links -->
             <div class="col-span-1 flex items-center justify-center mt-10 mb-16">
                 <div class="flex flex-col items-center space-y-5">
-                    <span class="text-sm text-white">
-                        ما را در شبکه های اجتماعی دنبال کنید
-                    </span>
+                    <span class="text-sm text-white">ما را در شبکه های اجتماعی دنبال کنید</span>
                     <div class="flex items-center space-x-6 rtl:space-x-reverse">
                         <a
                             v-for="socialLink in socialLinks"
@@ -76,6 +74,8 @@ const socialLinks = [
                 </div>
             </div>
         </div>
-        <div class="row-span-2 bg-rose-750"></div>
+        <div class="row-span-2 bg-rose-750">
+
+        </div>
     </footer>
 </template>

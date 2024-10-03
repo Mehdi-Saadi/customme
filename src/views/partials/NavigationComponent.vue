@@ -37,7 +37,7 @@ const navigations: { name: string; href: string }[] = [
 <template>
     <nav class="w-full flex items-center py-2 pe-2">
         <NavigationButton
-            class="bg-rose-750 text-white hover:bg-rose-800"
+            class="bg-rose-750 text-white hover:bg-rose-950"
             href="#"
         >
             <PencilStarsIcon class="size-6" />
