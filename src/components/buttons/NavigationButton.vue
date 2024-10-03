@@ -1,5 +1,5 @@
 <template>
-    <a class="flex items-center space-x-1 rtl:space-x-reverse text-sm py-2 px-4">
+    <a class="flex items-center space-x-1 rtl:space-x-reverse text-sm py-3 px-5">
         <slot />
     </a>
 </template>
