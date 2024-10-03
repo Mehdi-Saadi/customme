@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import HeaderComponent from "@/views/partials/HeaderComponent.vue";
-import NavigationComponent from "@/views/partials/NavigationComponent.vue";
+import HeaderComponent from '@/views/partials/HeaderComponent.vue';
+import NavigationComponent from '@/views/partials/NavigationComponent.vue';
 </script>
 
 <template>

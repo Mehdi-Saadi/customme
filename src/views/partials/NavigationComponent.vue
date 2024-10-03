@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import NavigationButton from "@/components/buttons/NavigationButton.vue";
-import PencilStarsIcon from "@/components/icons/PencilStarsIcon.vue";
+import NavigationButton from '@/components/buttons/NavigationButton.vue';
+import PencilStarsIcon from '@/components/icons/PencilStarsIcon.vue';
 
-const navigations: { name: string, href: string }[] = [
+const navigations: { name: string; href: string }[] = [
     {
         name: 'پوشاک',
         href: '#',
@@ -37,7 +37,7 @@ const navigations: { name: string, href: string }[] = [
 <template>
     <nav class="w-full flex items-center py-2 pe-2">
         <NavigationButton
-            class="bg-rose-750 rounded-lg text-white space-x-1 rtl:space-x-reverse"
+            class="bg-rose-750 text-white hover:bg-rose-800"
             href="#"
         >
             <PencilStarsIcon class="size-6" />
@@ -50,7 +50,7 @@ const navigations: { name: string, href: string }[] = [
             >
                 <a
                     :href="navigation.href"
-                    class="p-2"
+                    class="p-2 rounded-lg hover:bg-gray-100 transition duration-300"
                 >
                     {{ navigation.name }}
                 </a>

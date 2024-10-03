@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import ApplicationIcon from "@/components/icons/ApplicationIcon.vue";
-import LoginIcon from "@/components/icons/LoginIcon.vue";
-import NavigationButton from "@/components/buttons/NavigationButton.vue";
-import SearchIcon from "@/components/icons/SearchIcon.vue";
-import ShoppingCartIcon from "@/components/icons/ShoppingCartIcon.vue";
+import ApplicationIcon from '@/components/icons/ApplicationIcon.vue';
+import LoginIcon from '@/components/icons/LoginIcon.vue';
+import NavigationButton from '@/components/buttons/NavigationButton.vue';
+import SearchIcon from '@/components/icons/SearchIcon.vue';
+import ShoppingCartIcon from '@/components/icons/ShoppingCartIcon.vue';
 </script>
 
 <template>
@@ -20,12 +20,18 @@ import ShoppingCartIcon from "@/components/icons/ShoppingCartIcon.vue";
             <SearchIcon class="min-w-6 max-w-6 me-6" />
         </div>
         <div class="flex items-center space-x-4 rtl:space-x-reverse">
-            <NavigationButton href="#">
+            <NavigationButton
+                class="hover:bg-gray-100"
+                href="#"
+            >
                 <LoginIcon class="size-5" />
                 <span>ورود | ثبت نام</span>
             </NavigationButton>
 
-            <NavigationButton href="#">
+            <NavigationButton
+                class="hover:bg-gray-100"
+                href="#"
+            >
                 <ShoppingCartIcon class="size-6" />
                 <span>سبد خرید</span>
             </NavigationButton>
