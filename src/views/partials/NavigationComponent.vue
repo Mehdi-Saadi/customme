@@ -48,12 +48,12 @@ const navigations: { name: string; href: string }[] = [
                 v-for="navigation in navigations"
                 :key="navigation.name"
             >
-                <a
+                <NavigationButton
+                    class="hover:bg-gray-100"
                     :href="navigation.href"
-                    class="p-2 rounded-lg hover:bg-gray-100 transition duration-300"
                 >
                     {{ navigation.name }}
-                </a>
+                </NavigationButton>
             </li>
         </ol>
     </nav>
