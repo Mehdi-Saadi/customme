@@ -11,6 +11,7 @@ export default {
             colors: {
                 rose: {
                     750: '#a72f3b',
+                    950: '#641c23',
                 },
             },
         },
