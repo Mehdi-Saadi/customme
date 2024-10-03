@@ -5,9 +5,7 @@ import NavigationComponent from '@/views/partials/NavigationComponent.vue';
 
 <template>
     <div class="max-w-screen-xl mx-auto px-6">
-        <div class="w-full space-y-6">
-            <HeaderComponent />
-            <NavigationComponent />
-        </div>
+        <HeaderComponent />
+        <NavigationComponent />
     </div>
 </template>
