@@ -98,22 +98,22 @@ const footerLinks = [
 </script>
 
 <template>
-    <footer class="grid grid-rows-3 w-full mt-48">
+    <footer class="grid grid-rows-3 w-full mt-96 text-white">
         <div class="row-span-1 grid grid-cols-2 bg-rose-950">
             <!-- info registration -->
-            <div class="col-span-1 flex items-center px-28 my-auto space-x-3 rtl:space-x-reverse">
+            <div class="col-span-1 flex items-center ps-28 my-auto space-x-3 rtl:space-x-reverse">
                 <div class="flex flex-col items-center space-y-1">
-                    <span class="text-sm text-white">
+                    <span class="text-sm">
                         برای دریافت آخرین اخبار و تخفیف های جدید، ایمیل خود را وارد کنید
                     </span>
                     <input
-                        class="w-full ring-0 focus:ring-0 focus:border-white border-white bg-transparent rounded-lg placeholder:text-gray-400 text-white"
+                        class="w-full ring-0 focus:ring-0 focus:border-white border-white bg-transparent rounded-lg placeholder:text-gray-400"
                         type="text"
                         placeholder="ایمیل شما"
                     />
                 </div>
                 <button
-                    class="bg-rose-750 hover:bg-rose-800 rounded-lg px-7 py-2 text-white mt-auto"
+                    class="bg-rose-750 hover:bg-rose-800 rounded-lg px-7 py-2 mt-auto"
                 >
                     ثبت
                 </button>
@@ -121,7 +121,7 @@ const footerLinks = [
             <!-- social links -->
             <div class="col-span-1 flex items-center justify-center mt-10 mb-16">
                 <div class="flex flex-col items-center space-y-5">
-                    <span class="text-sm text-white">ما را در شبکه های اجتماعی دنبال کنید</span>
+                    <span class="text-sm">ما را در شبکه های اجتماعی دنبال کنید</span>
                     <div class="flex items-center space-x-6 rtl:space-x-reverse">
                         <a
                             v-for="socialLink in socialLinks"
@@ -138,7 +138,7 @@ const footerLinks = [
             </div>
         </div>
         <div class="row-span-2 grid grid-cols-3 bg-rose-750 pt-14 px-28 pb-5">
-            <div class="col-span-2 flex flex-col items-start text-white">
+            <div class="col-span-2 flex flex-col items-start">
                 <div class="w-full grid grid-cols-3 gap-8 text-sm">
                     <div
                         v-for="footerLink in footerLinks"
@@ -164,8 +164,17 @@ const footerLinks = [
                     تمام حقوق این وبسایت متعلق به فروشگاه آنلاین کاستومی می باشد
                 </span>
             </div>
-            <div class="col-span-1">
-                فروشگاه اینترنتی کاستومی
+            <div class="col-span-1 flex flex-col items-center">
+                <h3 class="text-lg font-bold mb-10">فروشگاه اینترنتی کاستومی</h3>
+                <div class="flex items-center text-xs space-x-8 rtl:space-x-reverse mb-16">
+                    <span>تماس با پشتیبانی: ۳۴۵۶۰۰۰-۰۲۱</span>
+                    <span>پاسخگویی ۲۴ ساعته، ۷ روز هفته</span>
+                </div>
+                <div class="flex items-center space-x-8 rtl:space-x-reverse">
+                    <img class="w-14 h-16" src="../../../public/img/footer-img3.png" alt="" />
+                    <img class="w-14 h-16" src="../../../public/img/footer-img2.png" alt="" />
+                    <img class="w-14 h-16" src="../../../public/img/footer-img1.png" alt="" />
+                </div>
             </div>
         </div>
     </footer>
