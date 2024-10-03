@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import HeaderComponent from '@/views/partials/HeaderComponent.vue';
 import NavigationComponent from '@/views/partials/NavigationComponent.vue';
+import FooterComponent from '@/views/partials/FooterComponent.vue';
 </script>
 
 <template>
@@ -8,4 +9,5 @@ import NavigationComponent from '@/views/partials/NavigationComponent.vue';
         <HeaderComponent />
         <NavigationComponent />
     </div>
+    <FooterComponent />
 </template>
