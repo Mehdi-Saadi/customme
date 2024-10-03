@@ -99,9 +99,9 @@ const footerLinks = [
 
 <template>
     <footer class="grid grid-rows-3 w-full mt-96 text-white">
-        <div class="row-span-1 grid grid-cols-2 bg-rose-950">
+        <div class="row-span-1 grid grid-cols-3 bg-rose-950 px-28">
             <!-- info registration -->
-            <div class="col-span-1 flex items-center ps-28 my-auto space-x-3 rtl:space-x-reverse">
+            <div class="col-span-2 flex items-center my-auto space-x-3 rtl:space-x-reverse">
                 <div class="flex flex-col items-center space-y-1">
                     <span class="text-sm">
                         برای دریافت آخرین اخبار و تخفیف های جدید، ایمیل خود را وارد کنید
