@@ -12,9 +12,7 @@ import TopBarComponent from '@/views/partials/TopBarComponent.vue';
         <div class="flex flex-col items-start px-6">
             <SortMenu />
             <!-- content -->
-            <div class="w-full grid grid-cols-3 gap-6 py-6">
-                <slot />
-            </div>
+            <slot />
         </div>
     </div>
     <FooterComponent />
