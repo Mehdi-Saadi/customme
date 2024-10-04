@@ -39,23 +39,42 @@ type ProductLinks = {
 };
 
 const useProductStore = defineStore('product', () => {
+    const pageNumber = ref<number>(1);
+    const totalPages = ref<number | null>(null);
     const products = ref<Product[] | null>(null);
     const images = ref<ProductImage[] | null>(null);
     const links = ref<ProductLinks | null>(null);
 
-    const fetchProducts = async (): Promise<void> => {
+    const fetchProducts = async (page: number = 1): Promise<void> => {
+        if (page <= 0) {
+            return;
+        }
+
         try {
-            const response = await fetch(import.meta.env.VITE_API_URL + '/products?include=images', {
-                method: 'GET',
-            });
+            const response = await fetch(
+                import.meta.env.VITE_API_URL + `/products?include=images&page=${page}&per_page=24`,
+                {
+                    method: 'GET',
+                }
+            );
             const json = await response.json();
 
+            pageNumber.value = page;
+            totalPages.value = json.meta.total_pages;
             products.value = json.data;
             images.value = json.included;
             links.value = json.links;
         } catch (error) {
             console.error(error);
         }
+    };
+
+    const nextPage = async (): Promise<void> => {
+        await fetchProducts(pageNumber.value + 1);
+    };
+
+    const previousPage = async (): Promise<void> => {
+        await fetchProducts(pageNumber.value - 1);
     };
 
     const getImage = (imageId: string): string | null => {
@@ -73,9 +92,13 @@ const useProductStore = defineStore('product', () => {
     };
 
     return {
+        pageNumber,
+        totalPages,
         products,
         links,
         fetchProducts,
+        nextPage,
+        previousPage,
         getImage,
     };
 });
