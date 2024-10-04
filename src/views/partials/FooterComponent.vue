@@ -166,7 +166,7 @@ const footerLinks = [
             </div>
             <div class="col-span-1 flex flex-col items-center">
                 <h3 class="text-lg font-bold mb-10">فروشگاه اینترنتی کاستومی</h3>
-                <div class="flex items-center text-xs space-x-8 rtl:space-x-reverse mb-16">
+                <div class="flex xl:flex-row flex-col space-y-4 xl:space-y-0 items-center text-xs xl:space-x-8 rtl:space-x-reverse mb-16">
                     <span>تماس با پشتیبانی: ۳۴۵۶۰۰۰-۰۲۱</span>
                     <span>پاسخگویی ۲۴ ساعته، ۷ روز هفته</span>
                 </div>
