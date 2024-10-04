@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ApplicationIcon from '@/components/icons/ApplicationIcon.vue';
+import CountIcon from '@/components/icons/CountIcon.vue';
 import LoginIcon from '@/components/icons/LoginIcon.vue';
 import NavigationButton from '@/components/buttons/NavigationButton.vue';
 import SearchIcon from '@/components/icons/SearchIcon.vue';
@@ -29,9 +30,10 @@ import ShoppingCartIcon from '@/components/icons/ShoppingCartIcon.vue';
             </NavigationButton>
 
             <NavigationButton
-                class="hover:bg-gray-100"
+                class="relative hover:bg-gray-100"
                 href="#"
             >
+                <CountIcon class="absolute size-4 xl:top-2 xl:start-4 top-1 start-2" />
                 <ShoppingCartIcon class="size-6" />
                 <span>سبد خرید</span>
             </NavigationButton>
