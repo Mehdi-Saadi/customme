@@ -2,7 +2,7 @@
 import ApplicationIcon from '@/components/icons/ApplicationIcon.vue';
 import CountIcon from '@/components/icons/CountIcon.vue';
 import LoginIcon from '@/components/icons/LoginIcon.vue';
-import NavigationButton from '@/components/buttons/NavigationButton.vue';
+import NavigationLink from '@/components/buttons/NavigationLink.vue';
 import SearchIcon from '@/components/icons/SearchIcon.vue';
 import ShoppingCartIcon from '@/components/icons/ShoppingCartIcon.vue';
 </script>
@@ -23,22 +23,22 @@ import ShoppingCartIcon from '@/components/icons/ShoppingCartIcon.vue';
             <SearchIcon class="min-w-6 max-w-6 me-6" />
         </div>
         <div class="flex items-center space-x-4 rtl:space-x-reverse">
-            <NavigationButton
+            <NavigationLink
                 class="hover:bg-gray-100"
                 href="#"
             >
                 <LoginIcon class="size-5" />
                 <span>ورود | ثبت نام</span>
-            </NavigationButton>
+            </NavigationLink>
 
-            <NavigationButton
+            <NavigationLink
                 class="relative hover:bg-gray-100"
                 href="#"
             >
                 <CountIcon class="absolute size-4 xl:top-2 xl:start-4 top-1 start-2" />
                 <ShoppingCartIcon class="size-6" />
                 <span>سبد خرید</span>
-            </NavigationButton>
+            </NavigationLink>
         </div>
     </header>
 </template>

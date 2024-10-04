@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NavigationButton from '@/components/buttons/NavigationButton.vue';
+import NavigationLink from '@/components/buttons/NavigationLink.vue';
 import PencilStarsIcon from '@/components/icons/PencilStarsIcon.vue';
 
 const navigations: { name: string; href: string }[] = [
@@ -36,24 +36,24 @@ const navigations: { name: string; href: string }[] = [
 
 <template>
     <nav class="max-w-screen-xl mx-auto w-full flex items-center py-2 ps-6 pe-2">
-        <NavigationButton
+        <NavigationLink
             class="bg-rose-750 text-white hover:bg-rose-950"
             href="#"
         >
             <PencilStarsIcon class="size-6" />
             <span>خودت طراحیش کن!</span>
-        </NavigationButton>
+        </NavigationLink>
         <ol class="flex grow items-center justify-between text-base mx-8">
             <li
                 v-for="navigation in navigations"
                 :key="navigation.name"
             >
-                <NavigationButton
+                <NavigationLink
                     class="hover:bg-gray-100"
                     :href="navigation.href"
                 >
                     {{ navigation.name }}
-                </NavigationButton>
+                </NavigationLink>
             </li>
         </ol>
     </nav>
