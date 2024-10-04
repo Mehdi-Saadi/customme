@@ -22,6 +22,11 @@ fetchProducts();
                 />
             </div>
         </template>
-        <template v-else> درحال بارگیری... </template>
+        <span
+            v-else
+            class="mx-auto mt-48"
+        >
+            درحال بارگیری...
+        </span>
     </StoreLayout>
 </template>
