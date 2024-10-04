@@ -15,9 +15,10 @@ defineProps<{
     >
         <!-- img -->
         <img
+            :src="image"
             alt=""
             class="w-full h-64 rounded-lg"
-            :src="image"
+            loading="lazy"
         />
         <!-- title -->
         <div class="w-full flex items-center justify-between mt-4">
