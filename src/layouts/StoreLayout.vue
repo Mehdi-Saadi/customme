@@ -9,7 +9,7 @@ import TopBarComponent from '@/views/partials/TopBarComponent.vue';
     <TopBarComponent />
     <div class="max-w-screen-xl mx-auto px-6 pt-56 flex items-start justify-start">
         <FilterMenu />
-        <div class="flex flex-col items-start px-6">
+        <div class="flex flex-col ps-6 pe-4">
             <SortMenu />
             <!-- content -->
             <slot />

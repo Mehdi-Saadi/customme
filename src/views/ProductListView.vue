@@ -11,7 +11,7 @@ fetchProducts();
 <template>
     <StoreLayout>
         <template v-if="useProductStore().products">
-            <div class="w-full grid grid-cols-3 gap-6 py-6">
+            <div class="w-full grid grid-cols-3 gap-5 py-6">
                 <ProductCard
                     v-for="product in useProductStore().products"
                     :key="product.id"
