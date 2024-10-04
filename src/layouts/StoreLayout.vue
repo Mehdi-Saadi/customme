@@ -6,7 +6,7 @@ import FilterMenu from '@/components/menus/FilterMenu.vue';
 
 <template>
     <TopBarComponent />
-    <div class="max-w-screen-xl mx-auto px-6 pt-52">
+    <div class="max-w-screen-xl mx-auto px-6 pt-56">
         <FilterMenu />
         <slot />
     </div>
