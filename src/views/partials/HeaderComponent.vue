@@ -8,7 +8,9 @@ import ShoppingCartIcon from '@/components/icons/ShoppingCartIcon.vue';
 </script>
 
 <template>
-    <header class="max-w-screen-xl mx-auto flex items-center space-x-16 rtl:space-x-reverse py-7 w-full mb-6">
+    <header
+        class="max-w-screen-xl mx-auto flex items-center space-x-16 rtl:space-x-reverse py-7 px-6 w-full mb-6"
+    >
         <ApplicationIcon />
         <div
             class="flex grow items-center h-12 rounded-2xl border border-gray-300 focus-within:border-gray-400 p-0.5"
