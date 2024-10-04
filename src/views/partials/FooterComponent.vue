@@ -112,9 +112,7 @@ const footerLinks = [
                         placeholder="ایمیل شما"
                     />
                 </div>
-                <button
-                    class="bg-rose-750 hover:bg-rose-800 rounded-lg px-7 py-2 mt-auto"
-                >
+                <button class="bg-rose-750 hover:bg-rose-800 rounded-lg px-7 py-2 mt-auto">
                     ثبت
                 </button>
             </div>
@@ -166,14 +164,28 @@ const footerLinks = [
             </div>
             <div class="col-span-1 flex flex-col items-center">
                 <h3 class="text-lg font-bold mb-10">فروشگاه اینترنتی کاستومی</h3>
-                <div class="flex xl:flex-row flex-col space-y-4 xl:space-y-0 items-center text-xs xl:space-x-8 rtl:space-x-reverse mb-16">
+                <div
+                    class="flex xl:flex-row flex-col space-y-4 xl:space-y-0 items-center text-xs xl:space-x-8 rtl:space-x-reverse mb-16"
+                >
                     <span>تماس با پشتیبانی: ۳۴۵۶۰۰۰-۰۲۱</span>
                     <span>پاسخگویی ۲۴ ساعته، ۷ روز هفته</span>
                 </div>
                 <div class="flex items-center space-x-8 rtl:space-x-reverse">
-                    <img class="w-14 h-16" src="../../../public/img/footer-img3.png" alt="" />
-                    <img class="w-14 h-16" src="../../../public/img/footer-img2.png" alt="" />
-                    <img class="w-14 h-16" src="../../../public/img/footer-img1.png" alt="" />
+                    <img
+                        class="w-14 h-16"
+                        src="../../../public/img/footer-img3.png"
+                        alt=""
+                    />
+                    <img
+                        class="w-14 h-16"
+                        src="../../../public/img/footer-img2.png"
+                        alt=""
+                    />
+                    <img
+                        class="w-14 h-16"
+                        src="../../../public/img/footer-img1.png"
+                        alt=""
+                    />
                 </div>
             </div>
         </div>
