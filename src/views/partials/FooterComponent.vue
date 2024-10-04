@@ -98,7 +98,7 @@ const footerLinks = [
 </script>
 
 <template>
-    <footer class="grid grid-rows-3 w-full mt-96 text-white">
+    <footer class="grid grid-rows-3 w-full mt-16 text-white">
         <div class="row-span-1 grid grid-cols-3 bg-rose-950 px-28">
             <!-- info registration -->
             <div class="col-span-2 flex items-center my-auto space-x-3 rtl:space-x-reverse">
