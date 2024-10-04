@@ -4,9 +4,8 @@ import TopBarComponent from "@/views/partials/TopBarComponent.vue";
 </script>
 
 <template>
-    <div class="max-w-screen-xl mx-auto px-6">
-        <TopBarComponent />
-
+    <TopBarComponent />
+    <div class="max-w-screen-xl mx-auto px-6 pt-52">
         <slot />
     </div>
     <FooterComponent />

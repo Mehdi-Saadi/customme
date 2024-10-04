@@ -35,7 +35,7 @@ const navigations: { name: string; href: string }[] = [
 </script>
 
 <template>
-    <nav class="w-full flex items-center py-2 pe-2">
+    <nav class="max-w-screen-xl mx-auto w-full flex items-center py-2 pe-2">
         <NavigationButton
             class="bg-rose-750 text-white hover:bg-rose-950"
             href="#"

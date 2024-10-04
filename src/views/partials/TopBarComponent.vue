@@ -4,6 +4,8 @@ import HeaderComponent from "@/views/partials/HeaderComponent.vue";
 </script>
 
 <template>
-    <HeaderComponent />
-    <NavigationComponent />
+    <div class="fixed w-full top-0 left-0 z-10 bg-white">
+        <HeaderComponent />
+        <NavigationComponent />
+    </div>
 </template>
