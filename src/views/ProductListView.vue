@@ -20,7 +20,7 @@ fetchProducts(Number(page));
                 <ProductCard
                     v-for="product in useProductStore().products"
                     :key="product.id"
-                    :image="getImage(product.relationships.images.data[0].id) || ''"
+                    :image="getImage(product.relationships.images.data[0]?.id) || ''"
                     :title="product.attributes.name"
                     :info="product.attributes.description"
                     :price="product.attributes.price"
