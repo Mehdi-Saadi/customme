@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import CircleArrowRightIcon from "@/components/icons/CircleArrowRightIcon.vue";
-import CircleArrowLeftIcon from "@/components/icons/CircleArrowLeftIcon.vue";
-import useProductStore from "@/stores/product";
+import CircleArrowRightIcon from '@/components/icons/CircleArrowRightIcon.vue';
+import CircleArrowLeftIcon from '@/components/icons/CircleArrowLeftIcon.vue';
+import useProductStore from '@/stores/product';
 
-const { nextPage, previousPage} = useProductStore();
+const { fetchProducts, nextPage, previousPage, pagesToShow } = useProductStore();
 </script>
 
 <template>
@@ -13,7 +13,19 @@ const { nextPage, previousPage} = useProductStore();
             class="size-6 cursor-pointer"
             title="قبلی"
         />
-        <div class="grow h-full border rounded-3xl py-3 px-9"></div>
+        <div
+            class="grow flex items-center h-full border rounded-3xl px-9 text-base space-x-6 rtl:space-x-reverse"
+        >
+            <button
+                v-for="page in pagesToShow"
+                :key="page"
+                class="flex my-auto items-center justify-center rounded-full size-8 border border-gray-600"
+                type="button"
+                @click="fetchProducts(page)"
+            >
+                <span>{{ page }}</span>
+            </button>
+        </div>
         <CircleArrowLeftIcon
             @click="nextPage()"
             class="size-6 cursor-pointer"
