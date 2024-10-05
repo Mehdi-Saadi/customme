@@ -22,13 +22,11 @@ defineProps<{
         />
         <!-- title -->
         <div class="w-full flex items-center justify-between mt-4">
-            <span class="font-bold text-lg">{{ title }}</span>
+            <span class="font-bold text-lg truncate">{{ title }}</span>
             <HeartIcon class="size-6" />
         </div>
         <!-- info -->
-        <p class="w-full text-sm mt-2.5 truncate">
-            {{ info }}
-        </p>
+        <p class="w-full text-sm mt-2.5 truncate" v-html="info"></p>
         <!-- price -->
         <span class="w-full font-bold text-xl mt-auto text-end">{{ price }} تومان</span>
     </div>
