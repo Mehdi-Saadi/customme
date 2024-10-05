@@ -5,12 +5,10 @@ import StoreLayout from '@/layouts/StoreLayout.vue';
 import useProductStore from '@/stores/product';
 import router from '@/router';
 
-const { fetchProducts, getImage } = useProductStore();
-
-const page: any = router.currentRoute.value.query.page || 1;
+const { getImage } = useProductStore();
 
 // initial fetch
-fetchProducts(Number(page));
+useProductStore().pageNumber = Number(router.currentRoute.value.query.page) || 1;
 </script>
 
 <template>
