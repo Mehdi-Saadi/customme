@@ -1,5 +1,5 @@
-import { computed, ref, watch } from 'vue';
 import { defineStore } from 'pinia';
+import { ref, watch } from 'vue';
 import router from '@/router';
 
 interface Product {
@@ -60,12 +60,12 @@ const useProductStore = defineStore('product', () => {
             );
             const json = await response.json();
 
-            pageNumber.value = page;
             totalPages.value = json.meta.total_pages;
             products.value = json.data;
             images.value = json.included;
             links.value = json.links;
 
+            // update url query
             await router.push({ name: 'product.list', query: { page: page } });
         } catch (error) {
             console.error(error);
@@ -86,26 +86,6 @@ const useProductStore = defineStore('product', () => {
         return result.attributes.original_url;
     };
 
-    const pagesToShow = computed(() => {
-        const range: number = 2;
-        let start: number = Math.max(1, pageNumber.value - range);
-        let end: number = Math.min(totalPages.value, pageNumber.value + range);
-
-        // Adjust start and end if they are too close to the edges
-        if (pageNumber.value <= range) {
-            end = Math.min(totalPages.value, end + (range - pageNumber.value + 1));
-        }
-        if (pageNumber.value + range >= totalPages.value) {
-            start = Math.max(1, start - (pageNumber.value + range - totalPages.value));
-        }
-
-        const pages: number[] = [];
-        for (let i = start; i <= end; i++) {
-            pages.push(i);
-        }
-        return pages;
-    });
-
     watch(pageNumber, () => fetchProducts(pageNumber.value));
 
     return {
@@ -115,7 +95,6 @@ const useProductStore = defineStore('product', () => {
         links,
         fetchProducts,
         getImage,
-        pagesToShow,
     };
 });
 
