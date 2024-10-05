@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 
-type Product = {
+interface Product {
     id: string;
     attributes: {
         name: string;
@@ -18,9 +18,9 @@ type Product = {
         };
     };
     // etc
-};
+}
 
-type ProductImage = {
+interface ProductImage {
     attributes: {
         alt: string;
         original_url: string;
@@ -28,15 +28,15 @@ type ProductImage = {
     };
     id: string;
     type: string;
-};
+}
 
-type ProductLinks = {
+interface ProductLinks {
     first: string;
     last: string;
     next: string;
     prev: string;
     self: string;
-};
+}
 
 const useProductStore = defineStore('product', () => {
     const pageNumber = ref<number>(1);
