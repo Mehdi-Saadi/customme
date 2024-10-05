@@ -2,36 +2,23 @@
 import CircleArrowRightIcon from '@/components/icons/CircleArrowRightIcon.vue';
 import CircleArrowLeftIcon from '@/components/icons/CircleArrowLeftIcon.vue';
 import useProductStore from '@/stores/product';
-
-const { fetchProducts, nextPage, previousPage } = useProductStore();
 </script>
 
 <template>
-    <div class="w-full flex items-center mt-10 h-14 px-28 space-x-3 rtl:space-x-reverse">
-        <CircleArrowRightIcon
-            @click="previousPage()"
-            class="size-6 cursor-pointer"
-            title="قبلی"
-        />
-        <div
-            class="grow flex items-center h-full border rounded-3xl px-9 text-base space-x-6 rtl:space-x-reverse"
-        >
-            <button
-                v-for="page in useProductStore().pagesToShow"
-                :key="page"
-                :style="[useProductStore().pageNumber === page ? 'background-color: #CA8289' : '']"
-                :class="{'border border-gray-600': useProductStore().pageNumber !== page}"
-                class="flex my-auto items-center justify-center rounded-full size-8"
-                type="button"
-                @click="fetchProducts(page)"
-            >
-                <span>{{ page }}</span>
-            </button>
-        </div>
-        <CircleArrowLeftIcon
-            @click="nextPage()"
-            class="size-6 cursor-pointer"
-            title="بعدی"
-        />
+    <div class="text-center">
+        <v-container>
+            <v-row justify="center">
+                <v-col cols="8">
+                    <v-container class="max-width">
+                        <v-pagination
+                            v-model="useProductStore().pageNumber"
+                            :length="useProductStore().totalPages"
+                            :prev-icon="CircleArrowLeftIcon"
+                            :next-icon="CircleArrowRightIcon"
+                        ></v-pagination>
+                    </v-container>
+                </v-col>
+            </v-row>
+        </v-container>
     </div>
 </template>

@@ -1,5 +1,5 @@
+import { computed, ref, watch } from 'vue';
 import { defineStore } from 'pinia';
-import { computed, ref } from 'vue';
 import router from '@/router';
 
 interface Product {
@@ -72,14 +72,6 @@ const useProductStore = defineStore('product', () => {
         }
     };
 
-    const nextPage = async (): Promise<void> => {
-        await fetchProducts(pageNumber.value + 1);
-    };
-
-    const previousPage = async (): Promise<void> => {
-        await fetchProducts(pageNumber.value - 1);
-    };
-
     const getImage = (imageId: string): string | null => {
         if (!images.value) {
             return null;
@@ -114,14 +106,14 @@ const useProductStore = defineStore('product', () => {
         return pages;
     });
 
+    watch(pageNumber, () => fetchProducts(pageNumber.value));
+
     return {
         pageNumber,
         totalPages,
         products,
         links,
         fetchProducts,
-        nextPage,
-        previousPage,
         getImage,
         pagesToShow,
     };
