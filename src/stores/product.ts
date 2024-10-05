@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
+import router from '@/router';
 
 interface Product {
     id: string;
@@ -64,6 +65,8 @@ const useProductStore = defineStore('product', () => {
             products.value = json.data;
             images.value = json.included;
             links.value = json.links;
+
+            await router.push({ name: 'product.list', query: { page: page } });
         } catch (error) {
             console.error(error);
         }

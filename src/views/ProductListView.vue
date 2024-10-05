@@ -3,10 +3,14 @@ import PaginationComponent from '@/components/PaginationComponent.vue';
 import ProductCard from '@/components/product/ProductCard.vue';
 import StoreLayout from '@/layouts/StoreLayout.vue';
 import useProductStore from '@/stores/product';
+import router from '@/router';
 
 const { fetchProducts, getImage } = useProductStore();
 
-fetchProducts();
+const page: any = router.currentRoute.value.query.page || 1;
+
+// initial fetch
+fetchProducts(Number(page));
 </script>
 
 <template>
