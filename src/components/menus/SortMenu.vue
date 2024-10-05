@@ -14,9 +14,6 @@ import SortButton from '@/components/buttons/SortButton.vue';
             <SortButton title="جدیدترین" />
         </li>
         <li>
-            <SortButton title="پرفرش ترین" />
-        </li>
-        <li>
             <SortButton title="گران ترین" />
         </li>
         <li>

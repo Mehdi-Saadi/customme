@@ -9,11 +9,6 @@ import FilterButton from '@/components/buttons/FilterButton.vue';
             <span class="text-rose-750 text-2xs font-bold"> حذف فیلترها </span>
         </div>
         <FilterButton
-            title="برند"
-            icon="chevron"
-            icon-class="size-4"
-        />
-        <FilterButton
             title="اندازه"
             icon="chevron"
             icon-class="size-4"
