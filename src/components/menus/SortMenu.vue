@@ -7,33 +7,25 @@ const { sortProducts, sortButtonIsActive } = useProductStore();
 
 <template>
     <ol class="flex items-center space-x-4 rtl:space-x-reverse ms-4 me-auto">
-        <li>
-            <SortButton
-                @click="sortProducts('-view_count')"
-                :checked="sortButtonIsActive('-view_count')"
-                title="پربازدیدترین"
-            />
-        </li>
-        <li>
-            <SortButton
-                @click="sortProducts('-created_at')"
-                :checked="sortButtonIsActive('-created_at')"
-                title="جدیدترین"
-            />
-        </li>
-        <li>
-            <SortButton
-                @click="sortProducts('-price')"
-                :checked="sortButtonIsActive('-price')"
-                title="گران ترین"
-            />
-        </li>
-        <li>
-            <SortButton
-                @click="sortProducts('price')"
-                :checked="sortButtonIsActive('price')"
-                title="ارزان ترین"
-            />
-        </li>
+        <SortButton
+            @click="sortProducts('-view_count')"
+            :checked="sortButtonIsActive('-view_count')"
+            title="پربازدیدترین"
+        />
+        <SortButton
+            @click="sortProducts('-created_at')"
+            :checked="sortButtonIsActive('-created_at')"
+            title="جدیدترین"
+        />
+        <SortButton
+            @click="sortProducts('-price')"
+            :checked="sortButtonIsActive('-price')"
+            title="گران ترین"
+        />
+        <SortButton
+            @click="sortProducts('price')"
+            :checked="sortButtonIsActive('price')"
+            title="ارزان ترین"
+        />
     </ol>
 </template>
