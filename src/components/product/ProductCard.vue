@@ -2,10 +2,7 @@
 import HeartIcon from '@/components/icons/HeartIcon.vue';
 
 defineProps<{
-    image: string;
-    title: string;
-    info: string;
-    price: number | string;
+    product: ProductAttributes
 }>();
 </script>
 
@@ -15,19 +12,22 @@ defineProps<{
     >
         <!-- img -->
         <img
-            :src="image"
+            :src="product.image"
             alt=""
             class="w-full h-64 rounded-lg"
             loading="lazy"
         />
         <!-- title -->
         <div class="w-full flex items-center justify-between mt-4">
-            <span class="font-bold text-lg truncate">{{ title }}</span>
+            <span class="font-bold text-lg truncate">{{ product.name }}</span>
             <HeartIcon class="size-6" />
         </div>
         <!-- info -->
-        <p class="w-full text-sm mt-2.5 truncate" v-html="info"></p>
+        <p
+            class="w-full text-sm mt-2.5 truncate"
+            v-html="product.description"
+        ></p>
         <!-- price -->
-        <span class="w-full font-bold text-xl mt-auto text-end">{{ price }} تومان</span>
+        <span class="w-full font-bold text-xl mt-auto text-end">{{ product.price }} تومان</span>
     </div>
 </template>

@@ -2,13 +2,6 @@ import { defineStore } from 'pinia';
 import { ref, watch } from 'vue';
 import router from '@/router';
 
-interface ProductAttributes {
-    name: string;
-    description: string;
-    price: string;
-    // etc
-}
-
 interface Product {
     id: string;
     attributes: ProductAttributes;
