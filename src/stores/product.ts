@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 
 interface Product {
     id: string;
@@ -88,16 +88,6 @@ const useProductStore = defineStore('product', () => {
     const sortButtonIsActive = (sort: SortProductsBy): boolean => {
         return sortBy.value === sort;
     };
-
-    watch(sortBy, (newValue, oldValue) => {
-        if (newValue !== oldValue) {
-            if (pageNumber.value === 1) {
-                fetchProducts();
-            } else {
-                pageNumber.value = 1;
-            }
-        }
-    });
 
     return {
         pageNumber,
