@@ -3,10 +3,6 @@ import PaginationComponent from '@/components/PaginationComponent.vue';
 import ProductCard from '@/components/product/ProductCard.vue';
 import StoreLayout from '@/layouts/StoreLayout.vue';
 import useProductStore from '@/stores/product';
-import router from '@/router';
-
-// initial fetch
-useProductStore().pageNumber = Number(router.currentRoute.value.query.page) || 1;
 </script>
 
 <template>

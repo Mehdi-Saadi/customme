@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia';
 import { ref, watch } from 'vue';
-import router from '@/router';
 
 interface Product {
     id: string;
@@ -46,12 +45,6 @@ const useProductStore = defineStore('product', () => {
             return;
         }
 
-        // update url query
-        await router.push({
-            name: 'product.list',
-            query: { page: pageNumber.value, sort: sortBy.value },
-        });
-
         try {
             const response = await fetch(
                 import.meta.env.VITE_API_URL +
@@ -84,6 +77,10 @@ const useProductStore = defineStore('product', () => {
         }
     };
 
+    const setPageNumber = (page: number): void => {
+        pageNumber.value = page;
+    };
+
     const sortProducts = (sort: SortProductsBy): void => {
         sortBy.value = sort;
     };
@@ -92,7 +89,6 @@ const useProductStore = defineStore('product', () => {
         return sortBy.value === sort;
     };
 
-    watch(pageNumber, fetchProducts);
     watch(sortBy, (newValue, oldValue) => {
         if (newValue !== oldValue) {
             if (pageNumber.value === 1) {
@@ -110,6 +106,7 @@ const useProductStore = defineStore('product', () => {
         products,
         links,
         fetchProducts,
+        setPageNumber,
         sortProducts,
         sortButtonIsActive,
     };
