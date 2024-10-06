@@ -53,6 +53,9 @@ const useProductStore = defineStore('product', () => {
             return;
         }
 
+        // update url query
+        await router.push({ name: 'product.list', query: { page: page } });
+
         try {
             const response = await fetch(
                 import.meta.env.VITE_API_URL + `/products?include=images&page=${page}&per_page=24`,
@@ -66,9 +69,6 @@ const useProductStore = defineStore('product', () => {
             products.value = json.data;
             images.value = json.included;
             links.value = json.links;
-
-            // update url query
-            await router.push({ name: 'product.list', query: { page: page } });
         } catch (error) {
             console.error(error);
         }
