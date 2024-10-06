@@ -35,22 +35,22 @@ interface ProductLinks {
 }
 
 const useProductStore = defineStore('product', () => {
-    const pageNumber = ref<number>(1);
-    const totalPages = ref<number>(1);
+    const pageNumber = ref<number>(0);
+    const totalPages = ref<number>(0);
     const products = ref<Product[]>([]);
     const links = ref<ProductLinks | null>(null);
 
-    const fetchProducts = async (page: number = 1): Promise<void> => {
-        if (page <= 0) {
+    const fetchProducts = async (): Promise<void> => {
+        if (pageNumber.value <= 0) {
             return;
         }
 
         // update url query
-        await router.push({ name: 'product.list', query: { page: page } });
+        await router.push({ name: 'product.list', query: { page: pageNumber.value } });
 
         try {
             const response = await fetch(
-                import.meta.env.VITE_API_URL + `/products?include=images&page=${page}&per_page=24`,
+                import.meta.env.VITE_API_URL + `/products?include=images&page=${pageNumber.value}&per_page=24`,
                 {
                     method: 'GET',
                 }
@@ -68,7 +68,6 @@ const useProductStore = defineStore('product', () => {
     };
 
     const setImageForProducts = (images: ProductImage[] | undefined): void => {
-
         if (images && images.length > 0) {
             for (const product of products.value) {
                 const result = images.find(image => image.id === product.relationships.images.data[0]?.id);
@@ -78,7 +77,7 @@ const useProductStore = defineStore('product', () => {
         }
     };
 
-    watch(pageNumber, () => fetchProducts(pageNumber.value));
+    watch(pageNumber, fetchProducts);
 
     return {
         pageNumber,
