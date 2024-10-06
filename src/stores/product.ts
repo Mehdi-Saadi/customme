@@ -25,17 +25,6 @@ interface ProductImage {
     type: string;
 }
 
-interface ProductFilters {
-    id: string;
-    name: string;
-    presentation: string;
-    option_values: {
-        id: string;
-        name: string;
-        presentation: string;
-    };
-}
-
 interface ProductLinks {
     first: string;
     last: string;
@@ -49,7 +38,7 @@ const useProductStore = defineStore('product', () => {
     const sortBy = ref<SortProductsBy>('-view_count');
     const totalPages = ref<number>(0);
     const products = ref<Product[]>([]);
-    const productFilters = ref<ProductFilters[]>([]);
+    const productFilters = ref<ProductFilter[]>([]);
     const links = ref<ProductLinks | null>(null);
 
     const fetchProducts = async (): Promise<void> => {
