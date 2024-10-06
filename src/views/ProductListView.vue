@@ -5,8 +5,6 @@ import StoreLayout from '@/layouts/StoreLayout.vue';
 import useProductStore from '@/stores/product';
 import router from '@/router';
 
-const { getImage } = useProductStore();
-
 // initial fetch
 useProductStore().pageNumber = Number(router.currentRoute.value.query.page) || 1;
 </script>
@@ -18,7 +16,6 @@ useProductStore().pageNumber = Number(router.currentRoute.value.query.page) || 1
                 <ProductCard
                     v-for="product in useProductStore().products"
                     :key="product.id"
-                    :image="getImage(product.relationships.images.data[0]?.id) || ''"
                     :product="product.attributes"
                 />
             </div>

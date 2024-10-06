@@ -37,8 +37,7 @@ interface ProductLinks {
 const useProductStore = defineStore('product', () => {
     const pageNumber = ref<number>(1);
     const totalPages = ref<number>(1);
-    const products = ref<Product[] | null>(null);
-    const images = ref<ProductImage[] | null>(null);
+    const products = ref<Product[]>([]);
     const links = ref<ProductLinks | null>(null);
 
     const fetchProducts = async (page: number = 1): Promise<void> => {
@@ -60,25 +59,23 @@ const useProductStore = defineStore('product', () => {
 
             totalPages.value = json.meta.total_pages;
             products.value = json.data;
-            images.value = json.included;
             links.value = json.links;
+
+            setImageForProducts(json.included);
         } catch (error) {
             console.error(error);
         }
     };
 
-    const getImage = (imageId: string): string | null => {
-        if (!images.value) {
-            return null;
+    const setImageForProducts = (images: ProductImage[] | undefined): void => {
+
+        if (images && images.length > 0) {
+            for (const product of products.value) {
+                const result = images.find(image => image.id === product.relationships.images.data[0]?.id);
+
+                product.attributes.image = result ? result.attributes.original_url : '';
+            }
         }
-
-        const result = images.value.find(image => image.id === imageId);
-
-        if (!result) {
-            return null;
-        }
-
-        return result.attributes.original_url;
     };
 
     watch(pageNumber, () => fetchProducts(pageNumber.value));
@@ -89,7 +86,6 @@ const useProductStore = defineStore('product', () => {
         products,
         links,
         fetchProducts,
-        getImage,
     };
 });
 
