@@ -18,7 +18,7 @@ declare global {
             id: string;
             name: string;
             presentation: string;
-        };
+        }[];
     }
 }
 

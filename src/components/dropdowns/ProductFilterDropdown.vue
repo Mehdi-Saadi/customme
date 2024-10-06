@@ -19,9 +19,26 @@ const showList = ref<boolean>(false);
             @click="showList = !showList"
         />
         <!-- list -->
-        <ol
+        <div
             v-show="showList"
-            class="h-min"
-        ></ol>
+            class="flex flex-col w-full max-h-52 overflow-y-auto p-0 text-sm"
+        >
+            <label
+                v-for="item in filter.option_values"
+                :key="item.id"
+                class="flex items-center space-x-2 rtl:space-x-reverse py-2 border-b cursor-pointer"
+                :for="item.id"
+            >
+                <input
+                    :id="item.id"
+                    :value="item.name"
+                    class="border rounded focus:ring-0 ring-0"
+                    type="checkbox"
+                />
+                <span>
+                    {{ item.presentation }}
+                </span>
+            </label>
+        </div>
     </div>
 </template>
