@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
     <div
-        class="border border-gray-300 rounded-2xl w-72 h-[26.875rem] p-4 flex flex-col items-center"
+        class="border border-gray-300 rounded-2xl w-full h-[26.875rem] p-4 flex flex-col items-center"
     >
         <!-- img -->
         <img

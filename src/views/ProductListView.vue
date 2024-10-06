@@ -8,7 +8,7 @@ import useProductStore from '@/stores/product';
 <template>
     <StoreLayout>
         <template v-if="useProductStore().products.length">
-            <div class="w-full grid grid-cols-3 gap-5 mt-6">
+            <div class="w-full grid xl:grid-cols-3 grid-cols-2 gap-5 mt-6">
                 <ProductCard
                     v-for="product in useProductStore().products"
                     :key="product.id"
