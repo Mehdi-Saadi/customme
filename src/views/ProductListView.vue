@@ -11,7 +11,7 @@ useProductStore().pageNumber = Number(router.currentRoute.value.query.page) || 1
 
 <template>
     <StoreLayout>
-        <template v-if="useProductStore().products">
+        <template v-if="useProductStore().products.length">
             <div class="w-full grid grid-cols-3 gap-5 mt-6">
                 <ProductCard
                     v-for="product in useProductStore().products"

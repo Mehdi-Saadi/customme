@@ -36,6 +36,7 @@ interface ProductLinks {
 
 const useProductStore = defineStore('product', () => {
     const pageNumber = ref<number>(0);
+    const sortBy = ref<SortProductsBy>('-view_count');
     const totalPages = ref<number>(0);
     const products = ref<Product[]>([]);
     const links = ref<ProductLinks | null>(null);
@@ -46,11 +47,15 @@ const useProductStore = defineStore('product', () => {
         }
 
         // update url query
-        await router.push({ name: 'product.list', query: { page: pageNumber.value } });
+        await router.push({
+            name: 'product.list',
+            query: { page: pageNumber.value, sort: sortBy.value },
+        });
 
         try {
             const response = await fetch(
-                import.meta.env.VITE_API_URL + `/products?include=images&page=${pageNumber.value}&per_page=24`,
+                import.meta.env.VITE_API_URL +
+                    `/products?include=images&page=${pageNumber.value}&per_page=24&sort=${sortBy.value}`,
                 {
                     method: 'GET',
                 }
@@ -70,21 +75,43 @@ const useProductStore = defineStore('product', () => {
     const setImageForProducts = (images: ProductImage[] | undefined): void => {
         if (images && images.length > 0) {
             for (const product of products.value) {
-                const result = images.find(image => image.id === product.relationships.images.data[0]?.id);
+                const result = images.find(
+                    image => image.id === product.relationships.images.data[0]?.id
+                );
 
                 product.attributes.image = result ? result.attributes.original_url : '';
             }
         }
     };
 
+    const sortProducts = (sort: SortProductsBy): void => {
+        sortBy.value = sort;
+    };
+
+    const sortButtonIsActive = (sort: SortProductsBy): boolean => {
+        return sortBy.value === sort;
+    };
+
     watch(pageNumber, fetchProducts);
+    watch(sortBy, (newValue, oldValue) => {
+        if (newValue !== oldValue) {
+            if (pageNumber.value === 1) {
+                fetchProducts();
+            } else {
+                pageNumber.value = 1;
+            }
+        }
+    });
 
     return {
         pageNumber,
+        sortBy,
         totalPages,
         products,
         links,
         fetchProducts,
+        sortProducts,
+        sortButtonIsActive,
     };
 });
 

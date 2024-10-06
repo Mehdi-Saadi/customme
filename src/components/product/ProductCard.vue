@@ -2,7 +2,7 @@
 import HeartIcon from '@/components/icons/HeartIcon.vue';
 
 defineProps<{
-    product: ProductAttributes
+    product: ProductAttributes;
 }>();
 </script>
 
