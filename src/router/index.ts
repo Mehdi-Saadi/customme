@@ -18,8 +18,8 @@ router.beforeEach((to, from, next) => {
     if (to.name === 'product.list') {
         const { fetchProducts, setPageNumber, sortProducts } = useProductStore();
 
-        setPageNumber(Number(router.currentRoute.value.query.page) || 1);
-        sortProducts(getSortOption(router.currentRoute.value.query?.sort));
+        setPageNumber(Number(to.query?.page) || 1);
+        sortProducts(getSortOption(to.query?.sort));
 
         fetchProducts();
     }
