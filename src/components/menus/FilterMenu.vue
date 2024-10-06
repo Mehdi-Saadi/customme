@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import FilterButton from '@/components/buttons/FilterButton.vue';
+import ProductFilterDropdown from '@/components/dropdowns/ProductFilterDropdown.vue';
+import useProductStore from '@/stores/product';
 </script>
 
 <template>
@@ -8,15 +10,10 @@ import FilterButton from '@/components/buttons/FilterButton.vue';
             <span class="text-base"> فیلترها </span>
             <span class="text-rose-750 text-2xs font-bold"> حذف فیلترها </span>
         </div>
-        <FilterButton
-            title="اندازه"
-            icon="chevron"
-            icon-class="size-4"
-        />
-        <FilterButton
-            title="رنگ"
-            icon="chevron"
-            icon-class="size-4"
+        <ProductFilterDropdown
+            v-for="filter in useProductStore().productFilters"
+            :key="filter.id"
+            :filter="filter"
         />
         <FilterButton
             title="ارسال امروز"
@@ -28,16 +25,6 @@ import FilterButton from '@/components/buttons/FilterButton.vue';
         />
         <FilterButton
             title="محدوده قیمت"
-            icon="chevron"
-            icon-class="size-4"
-        />
-        <FilterButton
-            title="مدل"
-            icon="chevron"
-            icon-class="size-4"
-        />
-        <FilterButton
-            title="طرح"
             icon="chevron"
             icon-class="size-4"
             :border-bottom="false"
