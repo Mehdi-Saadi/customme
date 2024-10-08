@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CircleArrowRightIcon from '@/components/icons/CircleArrowRightIcon.vue';
 import CircleArrowLeftIcon from '@/components/icons/CircleArrowLeftIcon.vue';
-import { VueAwesomePaginate } from "vue-awesome-paginate";
+import { VueAwesomePaginate } from 'vue-awesome-paginate';
 import useProductStore from '@/stores/product';
 import router from '@/router';
 </script>
@@ -13,7 +13,15 @@ import router from '@/router';
             :items-per-page="1"
             :max-pages-shown="3"
             v-model="useProductStore().pageNumber"
-            @click="router.push({name: 'product.list', query: { page: useProductStore().pageNumber, sort: router.currentRoute.value.query.sort }})"
+            @click="
+                router.push({
+                    name: 'product.list',
+                    query: {
+                        page: useProductStore().pageNumber,
+                        sort: useProductStore().sortBy,
+                    },
+                })
+            "
         >
             <template #prev-button>
                 <CircleArrowRightIcon class="size-6" />
@@ -33,14 +41,14 @@ import router from '@/router';
     justify-content: center;
     border: 1px solid #d1d5db;
     border-radius: 24px;
-    padding: .75rem 1.5rem;
+    padding: 0.75rem 1.5rem;
 }
 ul#componentContainer > li {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 .5rem;
+    margin: 0 0.5rem;
 }
 .paginate-buttons {
     width: 2rem;
@@ -54,9 +62,9 @@ ul#componentContainer > li {
     background-color: #f3f4f6;
 }
 .active-page {
-    background-color: #CA8289;
+    background-color: #ca8289;
 }
 .active-page:hover {
-    background-color: #CA8289;
+    background-color: #ca8289;
 }
 </style>
