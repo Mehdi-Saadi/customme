@@ -1,37 +1,62 @@
 <script setup lang="ts">
 import CircleArrowRightIcon from '@/components/icons/CircleArrowRightIcon.vue';
 import CircleArrowLeftIcon from '@/components/icons/CircleArrowLeftIcon.vue';
+import { VueAwesomePaginate } from "vue-awesome-paginate";
 import useProductStore from '@/stores/product';
-import { ref, watch } from 'vue';
 import router from '@/router';
-
-const { pageNumber } = useProductStore();
-
-const page = ref<number>(pageNumber);
-
-watch(page, () => {
-    router.push({
-        name: 'product.list',
-        query: { page: page.value, sort: router.currentRoute.value.query.sort },
-    });
-});
 </script>
 
 <template>
-    <div class="text-center">
-        <v-container>
-            <v-row justify="center">
-                <v-col cols="8">
-                    <v-container class="max-width">
-                        <v-pagination
-                            v-model="page"
-                            :length="useProductStore().totalPages"
-                            :prev-icon="CircleArrowLeftIcon"
-                            :next-icon="CircleArrowRightIcon"
-                        ></v-pagination>
-                    </v-container>
-                </v-col>
-            </v-row>
-        </v-container>
+    <div class="w-full flex items-center justify-center mt-10">
+        <VueAwesomePaginate
+            :total-items="useProductStore().totalPages"
+            :items-per-page="1"
+            :max-pages-shown="3"
+            v-model="useProductStore().pageNumber"
+            @click="router.push({name: 'product.list', query: { page: useProductStore().pageNumber, sort: router.currentRoute.value.query.sort }})"
+        >
+            <template #prev-button>
+                <CircleArrowRightIcon class="size-6" />
+            </template>
+
+            <template #next-button>
+                <CircleArrowLeftIcon class="size-6" />
+            </template>
+        </VueAwesomePaginate>
     </div>
 </template>
+
+<style>
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d1d5db;
+    border-radius: 24px;
+    padding: .75rem 1.5rem;
+}
+ul#componentContainer > li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 .5rem;
+}
+.paginate-buttons {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.paginate-buttons:hover {
+    background-color: #f3f4f6;
+}
+.active-page {
+    background-color: #CA8289;
+}
+.active-page:hover {
+    background-color: #CA8289;
+}
+</style>
