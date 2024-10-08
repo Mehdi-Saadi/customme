@@ -13,14 +13,27 @@ const showList = ref<boolean>(false);
 
 const filters = ref<string[]>([]);
 
+const filterName = `filter[options][${props.filter.name}]`;
+
+// initialize filters from url query
+for (const queryKey in router.currentRoute.value.query) {
+    if (filterName !== queryKey) {
+        continue;
+    }
+
+    const queryString = router.currentRoute.value.query[queryKey];
+
+    if (typeof queryString === 'string') {
+        filters.value = queryString.split(',');
+    }
+}
+
 watch(filters, () => {
     const { sortBy } = useProductStore();
     const query = setPageAndSortQueriesExceptFilter(1, sortBy);
     const stringFilters = filters.value.join(',');
 
-    query[`filter[options][${props.filter.name}]`] = stringFilters.length
-        ? stringFilters
-        : undefined;
+    query[filterName] = stringFilters.length ? stringFilters : undefined;
 
     router.push({
         name: 'product.list',
