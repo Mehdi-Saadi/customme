@@ -31,6 +31,7 @@ const getFiltersFromURL = (): string[] => {
 
 const filters = ref<string[]>(getFiltersFromURL());
 
+// this will be used when "reset filters" button clicked
 watch(router.currentRoute, () => {
     if (router.currentRoute.value.name === 'product.list') {
         const filterParams = getFiltersFromURL();
