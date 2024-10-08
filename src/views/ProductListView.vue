@@ -3,6 +3,10 @@ import PaginationComponent from '@/components/PaginationComponent.vue';
 import ProductCard from '@/components/product/ProductCard.vue';
 import StoreLayout from '@/layouts/StoreLayout.vue';
 import useProductStore from '@/stores/product';
+
+const { setParametersAndFetchProducts } = useProductStore();
+
+setParametersAndFetchProducts();
 </script>
 
 <template>

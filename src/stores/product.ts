@@ -93,16 +93,17 @@ const useProductStore = defineStore('product', () => {
         return sortBy.value === sort;
     };
 
+    const setParametersAndFetchProducts = (): void => {
+        setPageNumber(Number(router.currentRoute.value.query?.page) || 1);
+        sortProducts(getSortOption(router.currentRoute.value.query?.sort));
+
+        fetchProducts();
+    };
+
     // fetch products on route change
     watch(router.currentRoute, () => {
-        const currentRoute = router.currentRoute.value;
-        if (currentRoute.name === 'product.list') {
-            const { fetchProducts, setPageNumber, sortProducts } = useProductStore();
-
-            setPageNumber(Number(currentRoute.query?.page) || 1);
-            sortProducts(getSortOption(currentRoute.query?.sort));
-
-            fetchProducts();
+        if (router.currentRoute.value.name === 'product.list') {
+            setParametersAndFetchProducts();
         }
     });
 
@@ -117,6 +118,7 @@ const useProductStore = defineStore('product', () => {
         setPageNumber,
         sortProducts,
         sortButtonIsActive,
+        setParametersAndFetchProducts,
     };
 });
 
