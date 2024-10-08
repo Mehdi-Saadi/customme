@@ -1,12 +1,39 @@
 <script setup lang="ts">
 import FilterButton from '@/components/buttons/FilterButton.vue';
-import { ref } from 'vue';
+import useProductStore from '@/stores/product';
+import { ref, watch } from 'vue';
+import router from '@/router';
 
-defineProps<{
+const props = defineProps<{
     filter: ProductFilter;
 }>();
 
 const showList = ref<boolean>(false);
+
+const filters = ref<string[]>([]);
+
+watch(filters, () => {
+    const stringFilters = filters.value.join(',');
+
+    if (stringFilters.length) {
+        router.push({
+            name: 'product.list',
+            query: {
+                page: 1,
+                sort: useProductStore().sortBy,
+                [`filter[options][${props.filter.name}]`]: stringFilters,
+            },
+        });
+    } else {
+        router.push({
+            name: 'product.list',
+            query: {
+                page: 1,
+                sort: useProductStore().sortBy,
+            },
+        });
+    }
+});
 </script>
 
 <template>
@@ -32,6 +59,7 @@ const showList = ref<boolean>(false);
                 <input
                     :id="item.id"
                     :value="item.name"
+                    v-model="filters"
                     class="border rounded focus:ring-0 ring-0"
                     type="checkbox"
                 />
