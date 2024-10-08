@@ -1,3 +1,5 @@
+import router from '@/router';
+
 export const getSortOption = (sort: any): SortProductsBy => {
     switch (sort) {
         case '-created_at':
@@ -9,4 +11,8 @@ export const getSortOption = (sort: any): SortProductsBy => {
         default:
             return '-view_count';
     }
+};
+
+export const checkIfFilterQueryParameterExists = (): boolean => {
+    return !!Object.keys(router.currentRoute.value.query).find(key => key.includes('filter'));
 };
