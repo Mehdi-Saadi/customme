@@ -13,10 +13,6 @@ export const getSortOption = (sort: any): SortProductsBy => {
     }
 };
 
-export const checkIfFilterQueryParameterExists = (): boolean => {
-    return !!Object.keys(router.currentRoute.value.query).find(key => key.includes('filter'));
-};
-
 /**
  * This will keep filter queries while changing sort and page options
  */

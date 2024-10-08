@@ -1,4 +1,4 @@
-import { checkIfFilterQueryParameterExists, getSortOption } from '@/scripts/product';
+import { getSortOption } from '@/scripts/product';
 import { defineStore } from 'pinia';
 import { ref, watch } from 'vue';
 import router from '@/router';
@@ -97,16 +97,14 @@ const useProductStore = defineStore('product', () => {
     };
 
     const setFilterBy = (): void => {
-        if (checkIfFilterQueryParameterExists()) {
-            for (const paramKey in router.currentRoute.value.query) {
-                if (paramKey === 'page' || paramKey === 'sort') {
-                    continue;
-                }
+        filterBy.value = {};
 
-                filterBy.value[paramKey] = router.currentRoute.value.query[paramKey] as string;
+        for (const paramKey in router.currentRoute.value.query) {
+            if (paramKey === 'page' || paramKey === 'sort') {
+                continue;
             }
-        } else {
-            filterBy.value = {};
+
+            filterBy.value[paramKey] = router.currentRoute.value.query[paramKey] as string;
         }
     };
 
