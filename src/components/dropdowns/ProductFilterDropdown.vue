@@ -10,14 +10,9 @@ const props = defineProps<{
 }>();
 
 const showList = ref<boolean>(false);
-
-const filters = ref<string[]>([]);
-
 const filterName = `filter[options][${props.filter.name}]`;
 
-const setFiltersFromURL = (): void => {
-    filters.value = [];
-
+const getFiltersFromURL = (): string[] => {
     for (const queryKey in router.currentRoute.value.query) {
         if (filterName !== queryKey) {
             continue;
@@ -26,19 +21,14 @@ const setFiltersFromURL = (): void => {
         const queryString = router.currentRoute.value.query[queryKey];
 
         if (typeof queryString === 'string') {
-            filters.value = queryString.split(',');
+            return queryString.split(',');
         }
     }
+
+    return [];
 };
 
-setFiltersFromURL();
-
-// Will be used when clicking on 'reset filters' button
-watch(router.currentRoute, () => {
-    if (router.currentRoute.value.name === 'product.list') {
-        setFiltersFromURL();
-    }
-});
+const filters = ref<string[]>(getFiltersFromURL());
 
 watch(filters, () => {
     const { sortBy } = useProductStore();
