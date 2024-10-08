@@ -1,9 +1,20 @@
 <script setup lang="ts">
 import CircleArrowRightIcon from '@/assets/icons/circle-arrow-right-icon.svg';
 import CircleArrowLeftIcon from '@/assets/icons/circle-arrow-left-icon.svg';
+import { setPageAndSortQueriesExceptFilter } from '@/scripts/product';
 import { VueAwesomePaginate } from 'vue-awesome-paginate';
 import useProductStore from '@/stores/product';
 import router from '@/router';
+
+const handleNavigation = () => {
+    const { pageNumber, sortBy } = useProductStore();
+    const query = setPageAndSortQueriesExceptFilter(pageNumber, sortBy);
+
+    router.push({
+        name: 'product.list',
+        query: query,
+    });
+};
 </script>
 
 <template>
@@ -13,15 +24,7 @@ import router from '@/router';
             :items-per-page="1"
             :max-pages-shown="3"
             v-model="useProductStore().pageNumber"
-            @click="
-                router.push({
-                    name: 'product.list',
-                    query: {
-                        page: useProductStore().pageNumber,
-                        sort: useProductStore().sortBy,
-                    },
-                })
-            "
+            @click="handleNavigation()"
         >
             <template #prev-button>
                 <CircleArrowRightIcon class="size-6" />
