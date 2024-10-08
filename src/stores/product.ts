@@ -1,5 +1,7 @@
+import { getSortOption } from '@/scripts/sortHelpers';
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import router from '@/router';
 
 interface Product {
     id: string;
@@ -90,6 +92,19 @@ const useProductStore = defineStore('product', () => {
     const sortButtonIsActive = (sort: SortProductsBy): boolean => {
         return sortBy.value === sort;
     };
+
+    // fetch products on route change
+    watch(router.currentRoute, () => {
+        const currentRoute = router.currentRoute.value;
+        if (currentRoute.name === 'product.list') {
+            const { fetchProducts, setPageNumber, sortProducts } = useProductStore();
+
+            setPageNumber(Number(currentRoute.query?.page) || 1);
+            sortProducts(getSortOption(currentRoute.query?.sort));
+
+            fetchProducts();
+        }
+    });
 
     return {
         pageNumber,
