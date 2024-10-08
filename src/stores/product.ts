@@ -1,4 +1,4 @@
-import { getSortOption } from '@/scripts/sortHelpers';
+import { checkIfFilterQueryParameterExists, getSortOption } from '@/scripts/product';
 import { defineStore } from 'pinia';
 import { ref, watch } from 'vue';
 import router from '@/router';
@@ -35,9 +35,12 @@ interface ProductLinks {
     self: string;
 }
 
+type FilterProductsBy = Record<string, string>;
+
 const useProductStore = defineStore('product', () => {
     const pageNumber = ref<number>(0);
     const sortBy = ref<SortProductsBy>('-view_count');
+    const filterBy = ref<FilterProductsBy>({});
     const totalPages = ref<number>(0);
     const products = ref<Product[]>([]);
     const productFilters = ref<ProductFilter[]>([]);
@@ -51,7 +54,7 @@ const useProductStore = defineStore('product', () => {
         try {
             const response = await fetch(
                 import.meta.env.VITE_API_URL +
-                    `/products?include=images&page=${pageNumber.value}&per_page=24&sort=${sortBy.value}`,
+                    `/products?include=images&page=${pageNumber.value}&per_page=24&sort=${sortBy.value}${convertFiltersToQueryString()}`,
                 {
                     method: 'GET',
                 }
@@ -85,9 +88,40 @@ const useProductStore = defineStore('product', () => {
         return sortBy.value === sort;
     };
 
-    const setParametersAndFetchProducts = (): void => {
+    const setPageNumber = (): void => {
         pageNumber.value = Number(router.currentRoute.value.query?.page) || 1;
+    };
+
+    const setSortBy = (): void => {
         sortBy.value = getSortOption(router.currentRoute.value.query?.sort);
+    };
+
+    const setFilterBy = (): void => {
+        if (checkIfFilterQueryParameterExists()) {
+            for (const paramKey in router.currentRoute.value.query) {
+                if (paramKey === 'page' || paramKey === 'sort') {
+                    continue;
+                }
+
+                filterBy.value[paramKey] = router.currentRoute.value.query[paramKey] as string;
+            }
+        } else {
+            filterBy.value = {};
+        }
+    };
+
+    const convertFiltersToQueryString = (): string => {
+        const queryString = Object.keys(filterBy.value)
+            .map(key => `${key}=${filterBy.value[key]}`)
+            .join('&');
+
+        return queryString.length ? `&${queryString}` : '';
+    };
+
+    const setParametersAndFetchProducts = (): void => {
+        setPageNumber();
+        setSortBy();
+        setFilterBy();
 
         fetchProducts();
     };
@@ -102,6 +136,7 @@ const useProductStore = defineStore('product', () => {
     return {
         pageNumber,
         sortBy,
+        filterBy,
         totalPages,
         products,
         productFilters,
