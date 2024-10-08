@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import ApplicationIcon from '@/components/icons/ApplicationIcon.vue';
+import ApplicationIcon from '@/assets/icons/application-icon.svg';
 import CountIcon from '@/components/icons/CountIcon.vue';
 import LoginIcon from '@/components/icons/LoginIcon.vue';
 import NavigationLink from '@/components/buttons/NavigationLink.vue';
-import SearchIcon from '@/components/icons/SearchIcon.vue';
+import SearchIcon from '@/assets/icons/search-icon.svg';
 import ShoppingCartIcon from '@/components/icons/ShoppingCartIcon.vue';
 </script>
 

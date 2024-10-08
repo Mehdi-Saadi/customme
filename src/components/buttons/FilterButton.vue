@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ChevronDownSolidIcon from '@/components/icons/ChevronDownSolidIcon.vue';
+import ChevronDownSolidIcon from '@/assets/icons/chevron-down-solid-icon.svg';
 import ToggleButton from '@/components/buttons/ToggleButton.vue';
 
 withDefaults(

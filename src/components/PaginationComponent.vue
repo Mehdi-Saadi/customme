@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import CircleArrowRightIcon from '@/components/icons/CircleArrowRightIcon.vue';
-import CircleArrowLeftIcon from '@/components/icons/CircleArrowLeftIcon.vue';
+import CircleArrowRightIcon from '@/assets/icons/circle-arrow-right-icon.svg';
+import CircleArrowLeftIcon from '@/assets/icons/circle-arrow-left-icon.svg';
 import { VueAwesomePaginate } from 'vue-awesome-paginate';
 import useProductStore from '@/stores/product';
 import router from '@/router';
