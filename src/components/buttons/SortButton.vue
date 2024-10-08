@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { updateProductPageQueries } from '@/scripts/product';
 import useProductStore from '@/stores/product';
-import { setPageAndSortQueriesExceptFilter } from '@/scripts/product';
 
 defineProps<{
     sortBy: SortProductsBy;
@@ -13,7 +13,10 @@ const { sortButtonIsActive } = useProductStore();
 <template>
     <li>
         <RouterLink
-            :to="{ name: 'product.list', query: setPageAndSortQueriesExceptFilter(1, sortBy) }"
+            :to="{
+                name: 'product.list',
+                query: updateProductPageQueries({ page: 1, sort: sortBy }),
+            }"
             class="w-full flex flex-col items-center"
         >
             <span

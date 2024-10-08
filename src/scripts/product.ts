@@ -13,14 +13,17 @@ export const getSortOption = (sort: any): SortProductsBy => {
     }
 };
 
+type ProductPageQuery = Record<'page' | 'sort' | `filter[options][${string}]`, number | string | SortProductsBy>;
+
 /**
- * This will keep filter queries while changing sort and page options
+ * Will update provided fields, fields that doesn't provide will be untouched
  */
-export const setPageAndSortQueriesExceptFilter = (page: number, sortBy: SortProductsBy) => {
+export const updateProductPageQueries = (newQueries: ProductPageQuery) => {
     const currentQueries: any = { ...router.currentRoute.value.query };
 
-    currentQueries['page'] = page;
-    currentQueries['sort'] = sortBy;
+    for (const queryKey in newQueries) {
+        currentQueries[queryKey] = newQueries[queryKey as keyof ProductPageQuery];
+    }
 
     return currentQueries;
 };

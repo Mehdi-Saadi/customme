@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import CircleArrowRightIcon from '@/assets/icons/circle-arrow-right-icon.svg';
 import CircleArrowLeftIcon from '@/assets/icons/circle-arrow-left-icon.svg';
-import { setPageAndSortQueriesExceptFilter } from '@/scripts/product';
+import { updateProductPageQueries } from '@/scripts/product';
 import { VueAwesomePaginate } from 'vue-awesome-paginate';
 import useProductStore from '@/stores/product';
 import router from '@/router';
 
 const handleNavigation = () => {
     const { pageNumber, sortBy } = useProductStore();
-    const query = setPageAndSortQueriesExceptFilter(pageNumber, sortBy);
+    const query = updateProductPageQueries({
+        page: pageNumber,
+        sort: sortBy,
+    });
 
     router.push({
         name: 'product.list',
