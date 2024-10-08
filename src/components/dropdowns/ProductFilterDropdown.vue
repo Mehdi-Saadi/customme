@@ -2,6 +2,7 @@
 import FilterButton from '@/components/buttons/FilterButton.vue';
 import { setPageAndSortQueriesExceptFilter } from '@/scripts/product';
 import useProductStore from '@/stores/product';
+import isEqual from 'lodash.isequal';
 import { ref, watch } from 'vue';
 import router from '@/router';
 
@@ -30,7 +31,21 @@ const getFiltersFromURL = (): string[] => {
 
 const filters = ref<string[]>(getFiltersFromURL());
 
-watch(filters, () => {
+watch(router.currentRoute, () => {
+    if (router.currentRoute.value.name === 'product.list') {
+        const filterParams = getFiltersFromURL();
+
+        if (! isEqual(filters.value, filterParams)) {
+            filters.value = filterParams;
+        }
+    }
+});
+
+watch(filters, (value, oldValue) => {
+    if (isEqual(value, oldValue)) {
+        return;
+    }
+
     const { sortBy } = useProductStore();
     const query = setPageAndSortQueriesExceptFilter(1, sortBy);
     const stringFilters = filters.value.join(',');
