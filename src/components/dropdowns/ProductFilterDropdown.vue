@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import FilterButton from '@/components/buttons/FilterButton.vue';
+import { setPageAndSortQueriesExceptFilter } from '@/scripts/product';
 import useProductStore from '@/stores/product';
 import { ref, watch } from 'vue';
 import router from '@/router';
@@ -13,26 +14,18 @@ const showList = ref<boolean>(false);
 const filters = ref<string[]>([]);
 
 watch(filters, () => {
+    const { sortBy } = useProductStore();
+    const query = setPageAndSortQueriesExceptFilter(1, sortBy);
     const stringFilters = filters.value.join(',');
 
-    if (stringFilters.length) {
-        router.push({
-            name: 'product.list',
-            query: {
-                page: 1,
-                sort: useProductStore().sortBy,
-                [`filter[options][${props.filter.name}]`]: stringFilters,
-            },
-        });
-    } else {
-        router.push({
-            name: 'product.list',
-            query: {
-                page: 1,
-                sort: useProductStore().sortBy,
-            },
-        });
-    }
+    query[`filter[options][${props.filter.name}]`] = stringFilters.length
+        ? stringFilters
+        : undefined;
+
+    router.push({
+        name: 'product.list',
+        query: query,
+    });
 });
 </script>
 
