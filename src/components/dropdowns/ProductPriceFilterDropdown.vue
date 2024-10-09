@@ -18,7 +18,7 @@ const showPrice = ref<boolean>(false);
         />
         <!-- list -->
         <div
-            v-show="showPrice"
+            v-if="showPrice"
             class="flex flex-col w-full max-h-52 overflow-y-auto py-4 px-0 text-sm border-t"
         >
             <PricePickerComponent
