@@ -24,7 +24,7 @@ const handleInput = (event: KeyboardEvent, variable: 'min' | 'max'): void => {
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center space-y-5 w-full px-5">
+    <div class="flex flex-col items-center justify-center space-y-5 w-full px-5 pb-2">
         <div class="flex items-center w-full">
             <span class="text-gray-500 me-auto">از</span>
             <input
@@ -45,19 +45,5 @@ const handleInput = (event: KeyboardEvent, variable: 'min' | 'max'): void => {
                 type="text"
             />
         </div>
-        <input
-            v-model="minValue"
-            class="w-full"
-            type="range"
-            min="0"
-            max="500"
-        />
-        <input
-            v-model="maxValue"
-            class="w-full"
-            type="range"
-            min="0"
-            max="500"
-        />
     </div>
 </template>
