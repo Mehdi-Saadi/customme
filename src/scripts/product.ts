@@ -17,6 +17,7 @@ interface ProductPageQuery {
     page?: string | number;
     sort?: SortProductsBy;
     'filter[in_stock]'?: boolean;
+    'filter[price]'?: string;
     [K: `filter[options][${string}]`]: string;
 }
 
