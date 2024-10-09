@@ -16,7 +16,8 @@ export const getSortOption = (sort: any): SortProductsBy => {
 type ProductPageQuery = Record<'page' | 'sort' | `filter[options][${string}]`, number | string | SortProductsBy>;
 
 /**
- * Will update provided fields, fields that doesn't provide will be untouched
+ * Will update provided fields.
+ * Fields that doesn't provide will be untouched.
  */
 export const updateProductPageQueries = (newQueries: ProductPageQuery) => {
     const currentQueries: any = { ...router.currentRoute.value.query };
