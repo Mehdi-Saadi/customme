@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { updateProductPageQueries } from '@/scripts/product';
+import { ref, watch } from 'vue';
+import router from '@/router';
 
 const props = defineProps<{
     min: number;
@@ -21,6 +23,18 @@ const handleInput = (event: KeyboardEvent, variable: 'min' | 'max'): void => {
             ? Number(String(value.value).slice(0, -1))
             : Number(String(value.value) + event.key);
 };
+
+const updateRoute = (): void => {
+    const query = updateProductPageQueries({
+        page: 1,
+        'filter[price]': `${minValue.value},${maxValue.value}`,
+    });
+
+    router.push({ name: 'product.list', query: query });
+};
+
+watch(minValue, updateRoute);
+watch(maxValue, updateRoute);
 </script>
 
 <template>
