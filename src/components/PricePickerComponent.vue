@@ -18,10 +18,11 @@ const handleInput = (event: KeyboardEvent, variable: 'min' | 'max'): void => {
     }
 
     const value = variable === 'min' ? minValue : maxValue;
-    value.value =
+    const calculatedValue =
         event.key === 'Backspace'
             ? Number(String(value.value).slice(0, -1))
             : Number(String(value.value) + event.key);
+    value.value = calculatedValue < props.min || calculatedValue > props.max ? value.value : calculatedValue;
 };
 
 const updateRoute = (): void => {
