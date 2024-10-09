@@ -13,7 +13,12 @@ export const getSortOption = (sort: any): SortProductsBy => {
     }
 };
 
-type ProductPageQuery = Record<'page' | 'sort' | `filter[options][${string}]`, number | string | SortProductsBy>;
+interface ProductPageQuery {
+    page?: string | number;
+    sort?: SortProductsBy;
+    'filter[in_stock]'?: boolean;
+    [K: `filter[options][${string}]`]: string;
+}
 
 /**
  * Will update provided fields.
