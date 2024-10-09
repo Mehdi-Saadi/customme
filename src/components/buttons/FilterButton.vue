@@ -19,7 +19,7 @@ withDefaults(
 
 <template>
     <button
-        class="w-full flex items-center justify-between py-1.5"
+        class="w-full flex items-center justify-between py-4"
         :class="{ 'border-b': borderBottom }"
         type="button"
     >

@@ -80,7 +80,7 @@ watch(filters, (value, oldValue) => {
             <label
                 v-for="item in filter.option_values"
                 :key="item.id"
-                class="flex items-center space-x-2 rtl:space-x-reverse py-2 border-b cursor-pointer"
+                class="flex items-center space-x-2 rtl:space-x-reverse py-4 border-b cursor-pointer"
                 :for="item.id"
             >
                 <input
