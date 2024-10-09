@@ -21,7 +21,7 @@ const handleInStockToggle = () => {
         <div class="w-full flex items-center justify-between">
             <span class="text-base"> فیلترها </span>
             <RouterLink
-                v-show="Object.keys(useProductStore().filterBy).length"
+                v-show="Object.keys(useProductStore().filterBy).length || useProductStore().inStockOnly"
                 :to="{
                     name: 'product.list',
                     query: { page: useProductStore().pageNumber, sort: useProductStore().sortBy },
