@@ -37,10 +37,6 @@ const handleInStockToggle = () => {
             :filter="filter"
         />
         <FilterButton
-            title="ارسال امروز"
-            icon="toggle"
-        />
-        <FilterButton
             @click="handleInStockToggle"
             :toggle-checked="useProductStore().inStockOnly"
             title="فقط کالاهای موجود"
