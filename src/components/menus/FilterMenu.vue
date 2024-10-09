@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import FilterButton from '@/components/buttons/FilterButton.vue';
 import ProductFilterDropdown from '@/components/dropdowns/ProductFilterDropdown.vue';
+import ProductPriceFilterDropdown from '@/components/dropdowns/ProductPriceFilterDropdown.vue';
 import { updateProductPageQueries } from '@/scripts/product';
 import useProductStore from '@/stores/product';
 import router from '@/router';
 
-const handleInStockToggle = () => {
+const handleInStockToggle = (): void => {
     router.push({
         name: 'product.list',
         query: updateProductPageQueries({
@@ -17,11 +18,13 @@ const handleInStockToggle = () => {
 </script>
 
 <template>
-    <div class="w-72 h-auto border rounded-lg flex flex-col items-center p-5 space-y-5">
-        <div class="w-full flex items-center justify-between">
+    <div class="max-w-72 w-full h-auto border rounded-lg flex flex-col items-center px-5 pt-5 pb-2">
+        <div class="w-full flex items-center justify-between mb-2">
             <span class="text-base"> فیلترها </span>
             <RouterLink
-                v-show="Object.keys(useProductStore().filterBy).length || useProductStore().inStockOnly"
+                v-show="
+                    Object.keys(useProductStore().filterBy).length || useProductStore().inStockOnly
+                "
                 :to="{
                     name: 'product.list',
                     query: { page: useProductStore().pageNumber, sort: useProductStore().sortBy },
@@ -42,11 +45,6 @@ const handleInStockToggle = () => {
             title="فقط کالاهای موجود"
             icon="toggle"
         />
-        <FilterButton
-            title="محدوده قیمت"
-            icon="chevron"
-            icon-class="size-4"
-            :border-bottom="false"
-        />
+        <ProductPriceFilterDropdown />
     </div>
 </template>
