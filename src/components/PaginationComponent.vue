@@ -6,12 +6,9 @@ import { VueAwesomePaginate } from 'vue-awesome-paginate';
 import useProductStore from '@/stores/product';
 import router from '@/router';
 
-const handleNavigation = () => {
-    const { pageNumber, sortBy } = useProductStore();
-    const query = updateProductPageQueries({
-        page: pageNumber,
-        sort: sortBy,
-    });
+const handleNavigation = (): void => {
+    const { pageNumber } = useProductStore();
+    const query = updateProductPageQueries({ page: pageNumber });
 
     router.push({
         name: 'product.list',

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import FilterButton from '@/components/buttons/FilterButton.vue';
 import { updateProductPageQueries } from '@/scripts/product';
-import useProductStore from '@/stores/product';
 import isEqual from 'lodash.isequal';
 import { ref, watch } from 'vue';
 import router from '@/router';
@@ -47,11 +46,7 @@ watch(filters, (value, oldValue) => {
         return;
     }
 
-    const { sortBy } = useProductStore();
-    const query = updateProductPageQueries({
-        page: 1,
-        sort: sortBy,
-    });
+    const query = updateProductPageQueries({ page: 1 });
     const stringFilters = filters.value.join(',');
 
     query[filterName] = stringFilters.length ? stringFilters : undefined;
