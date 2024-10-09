@@ -42,6 +42,7 @@ const useProductStore = defineStore('product', () => {
     const sortBy = ref<SortProductsBy>('-view_count');
     const filterBy = ref<FilterProductsBy>({});
     const inStockOnly = ref<boolean>(false);
+    const priceRange = ref<{ min: number; max: number }>({ min: 0, max: 500 });
     const totalPages = ref<number>(0);
     const products = ref<Product[]>([]);
     const productFilters = ref<ProductFilter[]>([]);
@@ -113,6 +114,20 @@ const useProductStore = defineStore('product', () => {
         inStockOnly.value = router.currentRoute.value.query['filter[in_stock]'] === 'true';
     };
 
+    const setPriceRange = (): void => {
+        const priceRangeString: string | undefined = router.currentRoute.value.query[
+            'filter[price]'
+        ] as string | undefined;
+        const rangeArray = priceRangeString?.split(',');
+
+        if (rangeArray?.length !== 2) {
+            return;
+        }
+
+        priceRange.value.min = Number(rangeArray[0]);
+        priceRange.value.max = Number(rangeArray[1]);
+    };
+
     const convertFiltersToQueryString = (): string => {
         const queryString = Object.keys(filterBy.value)
             .map(key => `${key}=${filterBy.value[key]}`)
@@ -126,6 +141,7 @@ const useProductStore = defineStore('product', () => {
         setSortBy();
         setFilterBy();
         setInStockOnly();
+        setPriceRange();
 
         fetchProducts();
     };
@@ -142,6 +158,7 @@ const useProductStore = defineStore('product', () => {
         sortBy,
         filterBy,
         inStockOnly,
+        priceRange,
         totalPages,
         products,
         productFilters,

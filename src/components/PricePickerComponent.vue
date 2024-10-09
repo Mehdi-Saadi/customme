@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { updateProductPageQueries } from '@/scripts/product';
+import useProductStore from '@/stores/product';
 import { ref, watch } from 'vue';
 import router from '@/router';
 
@@ -8,8 +9,9 @@ const props = defineProps<{
     max: number;
 }>();
 
-const minValue = ref<number>(props.min);
-const maxValue = ref<number>(props.max);
+const { priceRange } = useProductStore();
+const minValue = ref<number>(priceRange.min);
+const maxValue = ref<number>(priceRange.max);
 
 const handleInput = (event: KeyboardEvent, variable: 'min' | 'max'): void => {
     const validKeys = ['Backspace', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -22,7 +24,8 @@ const handleInput = (event: KeyboardEvent, variable: 'min' | 'max'): void => {
         event.key === 'Backspace'
             ? Number(String(value.value).slice(0, -1))
             : Number(String(value.value) + event.key);
-    value.value = calculatedValue < props.min || calculatedValue > props.max ? value.value : calculatedValue;
+    value.value =
+        calculatedValue < props.min || calculatedValue > props.max ? value.value : calculatedValue;
 };
 
 const updateRoute = (): void => {
