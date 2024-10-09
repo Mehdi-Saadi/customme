@@ -41,6 +41,7 @@ const useProductStore = defineStore('product', () => {
     const pageNumber = ref<number>(0);
     const sortBy = ref<SortProductsBy>('-view_count');
     const filterBy = ref<FilterProductsBy>({});
+    const inStockOnly = ref<boolean>(false);
     const totalPages = ref<number>(0);
     const products = ref<Product[]>([]);
     const productFilters = ref<ProductFilter[]>([]);
@@ -54,7 +55,7 @@ const useProductStore = defineStore('product', () => {
         try {
             const response = await fetch(
                 import.meta.env.VITE_API_URL +
-                    `/products?include=images&page=${pageNumber.value}&per_page=24&sort=${sortBy.value}${convertFiltersToQueryString()}`,
+                    `/products?include=images&page=${pageNumber.value}&per_page=24&sort=${sortBy.value}&filter[in_stock]=${inStockOnly.value}${convertFiltersToQueryString()}`,
                 {
                     method: 'GET',
                 }
@@ -100,12 +101,16 @@ const useProductStore = defineStore('product', () => {
         filterBy.value = {};
 
         for (const paramKey in router.currentRoute.value.query) {
-            if (paramKey === 'page' || paramKey === 'sort') {
+            if (paramKey === 'page' || paramKey === 'sort' || paramKey === 'filter[in_stock]') {
                 continue;
             }
 
             filterBy.value[paramKey] = router.currentRoute.value.query[paramKey] as string;
         }
+    };
+
+    const setInStockOnly = (): void => {
+        inStockOnly.value = router.currentRoute.value.query['filter[in_stock]'] === 'true';
     };
 
     const convertFiltersToQueryString = (): string => {
@@ -120,6 +125,7 @@ const useProductStore = defineStore('product', () => {
         setPageNumber();
         setSortBy();
         setFilterBy();
+        setInStockOnly();
 
         fetchProducts();
     };
@@ -135,6 +141,7 @@ const useProductStore = defineStore('product', () => {
         pageNumber,
         sortBy,
         filterBy,
+        inStockOnly,
         totalPages,
         products,
         productFilters,

@@ -1,7 +1,19 @@
 <script setup lang="ts">
 import FilterButton from '@/components/buttons/FilterButton.vue';
 import ProductFilterDropdown from '@/components/dropdowns/ProductFilterDropdown.vue';
+import { updateProductPageQueries } from '@/scripts/product';
 import useProductStore from '@/stores/product';
+import router from '@/router';
+
+const handleInStockToggle = () => {
+    router.push({
+        name: 'product.list',
+        query: updateProductPageQueries({
+            page: 1,
+            'filter[in_stock]': !useProductStore().inStockOnly,
+        }),
+    });
+};
 </script>
 
 <template>
@@ -29,6 +41,8 @@ import useProductStore from '@/stores/product';
             icon="toggle"
         />
         <FilterButton
+            @click="handleInStockToggle"
+            :toggle-checked="useProductStore().inStockOnly"
             title="فقط کالاهای موجود"
             icon="toggle"
         />
