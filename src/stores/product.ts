@@ -55,7 +55,7 @@ const useProductStore = defineStore('product', () => {
         try {
             const response = await fetch(
                 import.meta.env.VITE_API_URL +
-                    `/products?include=images&page=${pageNumber.value}&per_page=24&sort=${sortBy.value}&filter[in_stock]=${inStockOnly.value}${convertFiltersToQueryString()}`,
+                    `/products?include=images&per_page=24&page=${pageNumber.value}&sort=${sortBy.value}${convertFiltersToQueryString()}`,
                 {
                     method: 'GET',
                 }
@@ -101,7 +101,7 @@ const useProductStore = defineStore('product', () => {
         filterBy.value = {};
 
         for (const paramKey in router.currentRoute.value.query) {
-            if (paramKey === 'page' || paramKey === 'sort' || paramKey === 'filter[in_stock]') {
+            if (paramKey === 'page' || paramKey === 'sort') {
                 continue;
             }
 
