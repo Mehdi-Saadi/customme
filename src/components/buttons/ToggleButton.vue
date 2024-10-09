@@ -12,7 +12,7 @@ defineProps<{
             type="checkbox"
         />
         <span
-            class="relative w-[38px] h-[22px] rounded-full peer bg-white border peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:end-[2px] after:bg-gray-400 after:rounded-full after:size-4 after:transition-all peer-checked:bg-rose-750"
+            class="relative w-[38px] h-[22px] rounded-full peer bg-white border peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:end-[2px] after:bg-gray-400 peer-checked:after:bg-white after:rounded-full after:size-4 after:transition-all peer-checked:bg-rose-750"
         ></span>
     </div>
 </template>
