@@ -27,14 +27,6 @@ interface ProductImage {
     type: string;
 }
 
-interface ProductLinks {
-    first: string;
-    last: string;
-    next: string;
-    prev: string;
-    self: string;
-}
-
 type FilterProductsBy = Record<string, string>;
 
 const useProductStore = defineStore('product', () => {
@@ -46,7 +38,6 @@ const useProductStore = defineStore('product', () => {
     const totalPages = ref<number>(0);
     const products = ref<Product[]>([]);
     const productFilters = ref<ProductFilter[]>([]);
-    const links = ref<ProductLinks | null>(null);
 
     const fetchProducts = async (): Promise<void> => {
         if (pageNumber.value <= 0) {
@@ -66,7 +57,6 @@ const useProductStore = defineStore('product', () => {
             totalPages.value = json.meta.total_pages;
             products.value = json.data;
             productFilters.value = json.meta.filters.option_types;
-            links.value = json.links;
 
             setImageForProducts(json.included);
         } catch (error) {
@@ -162,7 +152,6 @@ const useProductStore = defineStore('product', () => {
         totalPages,
         products,
         productFilters,
-        links,
         sortButtonIsActive,
         setParametersAndFetchProducts,
     };
