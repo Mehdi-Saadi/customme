@@ -10,12 +10,12 @@ import ShoppingCartIcon from '@/assets/icons/shopping-cart-icon.svg';
 
 <template>
     <header
-        class="max-w-screen-xl mx-auto flex flex-row-reverse lg:flex-row items-center space-x-8 lg:space-x-16 rtl:space-x-reverse py-7 px-6 w-full mb-6"
+        class="max-w-screen-xl mx-auto flex flex-row-reverse lg:flex-row items-center py-7 px-6 w-full mb-6"
     >
-        <ApplicationIconLg class="hidden lg:block" />
-        <ApplicationIconSm class="rounded-full block lg:hidden" />
+        <ApplicationIconLg class="hidden lg:block me-16" />
+        <ApplicationIconSm class="rounded-full block lg:hidden ms-8" />
         <div
-            class="flex grow items-center h-10 lg:h-12 rounded-full lg:rounded-2xl border border-gray-300 focus-within:border-gray-400 p-0.5"
+            class="flex grow items-center h-10 lg:h-12 rounded-full lg:rounded-2xl border border-gray-300 focus-within:border-gray-400 p-0.5 ms-8 lg:ms-0 lg:me-16"
         >
             <input
                 autocomplete="off"
