@@ -23,7 +23,7 @@ setParametersAndFetchProducts();
         </template>
         <span
             v-else
-            class="mx-auto mt-24"
+            class="mx-auto mt-24 mb-40"
         >
             درحال بارگیری...
         </span>
