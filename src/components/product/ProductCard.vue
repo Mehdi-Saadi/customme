@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeartIcon from '@/components/icons/HeartIcon.vue';
+import HeartIcon from '@/assets/icons/heart-icon.svg';
 
 defineProps<{
     product: ProductAttributes;

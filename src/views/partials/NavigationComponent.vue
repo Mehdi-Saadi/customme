@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import NavigationLink from '@/components/buttons/NavigationLink.vue';
-import PencilStarsIcon from '@/components/icons/PencilStarsIcon.vue';
+import PencilStarsIcon from '@/assets/icons/pencil-starts-icon.svg';
 
 const navigations: { name: string; href: string }[] = [
     {

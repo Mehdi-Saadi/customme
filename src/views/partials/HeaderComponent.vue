@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import ApplicationIcon from '@/assets/icons/application-icon.svg';
 import CountIcon from '@/components/icons/CountIcon.vue';
-import LoginIcon from '@/components/icons/LoginIcon.vue';
+import LoginIcon from '@/assets/icons/login-icon.svg';
 import NavigationLink from '@/components/buttons/NavigationLink.vue';
 import SearchIcon from '@/assets/icons/search-icon.svg';
-import ShoppingCartIcon from '@/components/icons/ShoppingCartIcon.vue';
+import ShoppingCartIcon from '@/assets/icons/shopping-cart-icon.svg';
 </script>
 
 <template>
@@ -27,7 +27,7 @@ import ShoppingCartIcon from '@/components/icons/ShoppingCartIcon.vue';
                 class="hover:bg-gray-100"
                 href="#"
             >
-                <LoginIcon class="size-5" />
+                <LoginIcon />
                 <span>ورود | ثبت نام</span>
             </NavigationLink>
 
