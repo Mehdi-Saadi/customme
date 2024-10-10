@@ -101,8 +101,8 @@ const footerLinks = [
     <footer class="grid grid-rows-3 w-full mt-16 text-white">
         <div class="row-span-1 grid grid-cols-3 bg-rose-950 px-28">
             <!-- info registration -->
-            <div class="col-span-2 flex items-center my-auto space-x-3 rtl:space-x-reverse">
-                <div class="flex flex-col items-center space-y-1">
+            <div class="col-span-2 flex flex-col lg:flex-row items-start lg:items-center my-auto">
+                <div class="flex flex-col items-center space-y-2 lg:space-y-1">
                     <span class="text-sm">
                         برای دریافت آخرین اخبار و تخفیف های جدید، ایمیل خود را وارد کنید
                     </span>
@@ -112,7 +112,7 @@ const footerLinks = [
                         placeholder="ایمیل شما"
                     />
                 </div>
-                <button class="bg-rose-750 hover:bg-rose-800 rounded-lg px-7 py-2 mt-auto">
+                <button class="bg-rose-750 hover:bg-rose-800 rounded-lg px-7 py-2 lg:mt-auto mt-2 lg:ms-3">
                     ثبت
                 </button>
             </div>
