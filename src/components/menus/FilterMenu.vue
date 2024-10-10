@@ -18,7 +18,7 @@ const handleInStockToggle = (): void => {
 </script>
 
 <template>
-    <div class="max-w-72 w-full h-auto border rounded-lg flex flex-col items-center px-5 pt-5 pb-2">
+    <div class="max-w-72 w-full h-auto border rounded-lg hidden xl:flex flex-col items-center px-5 pt-5 pb-2">
         <div class="w-full flex items-center justify-between mb-2">
             <span class="text-base"> فیلترها </span>
             <RouterLink
