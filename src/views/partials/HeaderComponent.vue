@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import ApplicationIcon from '@/assets/icons/application-icon.svg';
+import ApplicationIconLg from '@/assets/icons/application-icon-lg.svg';
+import ApplicationIconSm from '@/assets/icons/application-icon-sm.svg';
 import CountIcon from '@/components/icons/CountIcon.vue';
 import LoginIcon from '@/assets/icons/login-icon.svg';
 import NavigationLink from '@/components/buttons/NavigationLink.vue';
@@ -9,18 +10,19 @@ import ShoppingCartIcon from '@/assets/icons/shopping-cart-icon.svg';
 
 <template>
     <header
-        class="max-w-screen-xl mx-auto flex items-center space-x-16 rtl:space-x-reverse py-7 px-6 w-full mb-6"
+        class="max-w-screen-xl mx-auto flex flex-row-reverse lg:flex-row items-center space-x-8 lg:space-x-16 rtl:space-x-reverse py-7 px-6 w-full mb-6"
     >
-        <ApplicationIcon />
+        <ApplicationIconLg class="hidden lg:block" />
+        <ApplicationIconSm class="rounded-full block lg:hidden" />
         <div
-            class="flex grow items-center h-12 rounded-2xl border border-gray-300 focus-within:border-gray-400 p-0.5"
+            class="flex grow items-center h-10 lg:h-12 rounded-full lg:rounded-2xl border border-gray-300 focus-within:border-gray-400 p-0.5"
         >
             <input
                 autocomplete="off"
-                class="size-full rounded-2xl focus:ring-0 border-none px-6"
+                class="size-full rounded-full lg:rounded-2xl focus:ring-0 border-none px-6"
                 type="text"
             />
-            <SearchIcon class="min-w-6 max-w-6 me-6" />
+            <SearchIcon class="min-w-6 max-w-6 me-2 lg:me-6" />
         </div>
         <div class="flex items-center space-x-4 rtl:space-x-reverse">
             <NavigationLink
