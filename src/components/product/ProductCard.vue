@@ -19,7 +19,7 @@ defineProps<{
         />
         <!-- title -->
         <div class="w-full flex items-center justify-between mt-4">
-            <span class="font-bold text-lg truncate">{{ product.name }}</span>
+            <span class="max-w-52 font-bold text-lg truncate">{{ product.name }}</span>
             <HeartIcon class="size-6" />
         </div>
         <!-- info -->
