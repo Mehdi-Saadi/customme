@@ -112,7 +112,9 @@ const footerLinks = [
                         placeholder="ایمیل شما"
                     />
                 </div>
-                <button class="bg-rose-750 hover:bg-rose-800 rounded-lg px-7 py-2 lg:mt-auto mt-2 lg:ms-3">
+                <button
+                    class="bg-rose-750 hover:bg-rose-800 rounded-lg px-7 py-2 lg:mt-auto mt-2 lg:ms-3"
+                >
                     ثبت
                 </button>
             </div>
