@@ -1,6 +1,6 @@
 import { getSortOption } from '@/scripts/product';
 import { defineStore } from 'pinia';
-import { ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import router from '@/router';
 
 interface ProductImage {
@@ -144,12 +144,14 @@ const useProductStore = defineStore('product', () => {
             return;
         }
 
-        if (item.count) {
+        if (item.count > 1) {
             item.count--;
         } else {
             delete shoppingCart.value[product.id];
         }
     };
+
+    const countOfShoppingCartItems = computed(() => Object.keys(shoppingCart.value).length);
 
     // fetch products on route change
     watch(router.currentRoute, () => {
@@ -172,6 +174,7 @@ const useProductStore = defineStore('product', () => {
         setParametersAndFetchProducts,
         addProductToCart,
         removeProductFromCart,
+        countOfShoppingCartItems,
     };
 });
 

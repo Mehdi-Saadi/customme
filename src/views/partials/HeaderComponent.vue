@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import ApplicationIconLg from '@/assets/icons/application-icon-lg.svg';
 import ApplicationIconSm from '@/assets/icons/application-icon-sm.svg';
-import CountIcon from '@/components/icons/CountIcon.vue';
 import LoginIcon from '@/assets/icons/login-icon.svg';
 import NavigationLink from '@/components/buttons/NavigationLink.vue';
 import SearchIcon from '@/assets/icons/search-icon.svg';
 import ShoppingCartIcon from '@/assets/icons/shopping-cart-icon.svg';
+import useProductStore from '@/stores/product';
+import { toPersianNums } from '@/scripts/helpers';
 </script>
 
 <template>
@@ -37,7 +38,13 @@ import ShoppingCartIcon from '@/assets/icons/shopping-cart-icon.svg';
                 class="relative hover:bg-gray-100"
                 href="#"
             >
-                <CountIcon class="absolute size-4 xl:top-2 xl:start-4 top-1 start-2" />
+                <div
+                    class="absolute size-4 xl:top-2 xl:start-4 top-1 start-2 rounded-full bg-[#dcacb1] flex items-center justify-center"
+                >
+                    <span>{{
+                        toPersianNums(String(useProductStore().countOfShoppingCartItems))
+                    }}</span>
+                </div>
                 <ShoppingCartIcon class="size-6" />
                 <span>سبد خرید</span>
             </NavigationLink>
