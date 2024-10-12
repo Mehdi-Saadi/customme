@@ -3,20 +3,6 @@ import { defineStore } from 'pinia';
 import { ref, watch } from 'vue';
 import router from '@/router';
 
-interface Product {
-    id: string;
-    attributes: ProductAttributes;
-    relationships: {
-        images: {
-            data: {
-                id: string;
-                type: 'image';
-            }[];
-        };
-    };
-    // etc
-}
-
 interface ProductImage {
     attributes: {
         alt: string;
@@ -28,6 +14,10 @@ interface ProductImage {
 }
 
 type FilterProductsBy = Record<string, string>;
+interface ShoppingCartItem {
+    count: number;
+}
+type ShoppingCart = Record<Product['id'], ShoppingCartItem>;
 
 const useProductStore = defineStore('product', () => {
     const pageNumber = ref<number>(0);
@@ -38,6 +28,7 @@ const useProductStore = defineStore('product', () => {
     const totalPages = ref<number>(0);
     const products = ref<Product[]>([]);
     const productFilters = ref<ProductFilter[]>([]);
+    const shoppingCart = ref<ShoppingCart>({});
 
     const fetchProducts = async (): Promise<void> => {
         if (pageNumber.value <= 0) {
@@ -136,6 +127,30 @@ const useProductStore = defineStore('product', () => {
         fetchProducts();
     };
 
+    const addProductToCart = (product: Product): void => {
+        const item: ShoppingCartItem | undefined = shoppingCart.value[product.id];
+
+        if (item) {
+            item.count++;
+        } else {
+            shoppingCart.value[product.id] = { count: 1 };
+        }
+    };
+
+    const removeProductFromCart = (product: Product): void => {
+        const item: ShoppingCartItem | undefined = shoppingCart.value[product.id];
+
+        if (!item) {
+            return;
+        }
+
+        if (item.count) {
+            item.count--;
+        } else {
+            delete shoppingCart.value[product.id];
+        }
+    };
+
     // fetch products on route change
     watch(router.currentRoute, () => {
         if (router.currentRoute.value.name === 'product.list') {
@@ -152,8 +167,11 @@ const useProductStore = defineStore('product', () => {
         totalPages,
         products,
         productFilters,
+        shoppingCart,
         sortButtonIsActive,
         setParametersAndFetchProducts,
+        addProductToCart,
+        removeProductFromCart,
     };
 });
 

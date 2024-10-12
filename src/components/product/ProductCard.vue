@@ -1,15 +1,24 @@
 <script setup lang="ts">
 import HeartIcon from '@/assets/icons/heart-icon.svg';
+import PlusSquareIcon from '@/assets/icons/plus-square-icon.svg';
+import MinosSquareIcon from '@/assets/icons/minus-square-icon.svg';
+import useProductStore from '@/stores/product';
+import { computed } from 'vue';
 
-defineProps<{
+const props = defineProps<{
     product: Product;
 }>();
+
+const { addProductToCart, removeProductFromCart } = useProductStore();
+
+const countOfProductInShoppingCart = computed(() => {
+    const item = useProductStore().shoppingCart[props.product.id];
+    return item ? item.count : 0;
+});
 </script>
 
 <template>
-    <div
-        class="border border-gray-300 rounded-2xl w-full h-[30rem] p-4 flex flex-col items-center"
-    >
+    <div class="border border-gray-300 rounded-2xl w-full h-[30rem] p-4 flex flex-col items-center">
         <!-- img -->
         <img
             :src="product.attributes.image"
@@ -28,12 +37,31 @@ defineProps<{
             v-html="product.attributes.description"
         ></p>
         <!-- price -->
-        <span class="w-full font-bold text-xl mt-auto text-end">{{ product.attributes.price }} تومان</span>
+        <span class="w-full font-bold text-xl mt-auto text-end">
+            {{ product.attributes.price }} تومان
+        </span>
+        <!-- shopping cart -->
+        <div
+            v-if="countOfProductInShoppingCart"
+            class="w-full flex items-center justify-between border border-rose-750 py-2 px-10 mt-3 text-rose-750 text-sm rounded-lg select-none"
+        >
+            <PlusSquareIcon
+                @click="addProductToCart(product)"
+                class="size-6 cursor-pointer"
+            />
+            <span>{{ countOfProductInShoppingCart }} عدد</span>
+            <MinosSquareIcon
+                @click="removeProductFromCart(product)"
+                class="size-6 cursor-pointer"
+            />
+        </div>
         <button
+            v-else
+            @click="addProductToCart(product)"
             class="w-full border border-rose-750 py-2 mt-3 text-rose-750 text-sm rounded-lg hover:text-rose-950 hover:border-rose-950 transition duration-300"
             type="button"
         >
-            <span>افزودن به سبد خرید</span>
+            <span> افزودن به سبد خرید </span>
         </button>
     </div>
 </template>
