@@ -16,7 +16,7 @@ setParametersAndFetchProducts();
                 <ProductCard
                     v-for="product in useProductStore().products"
                     :key="product.id"
-                    :product="product.attributes"
+                    :product="product"
                 />
             </div>
             <PaginationComponent />

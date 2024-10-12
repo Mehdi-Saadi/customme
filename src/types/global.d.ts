@@ -1,4 +1,18 @@
 declare global {
+    interface Product {
+        id: string;
+        attributes: ProductAttributes;
+        relationships: {
+            images: {
+                data: {
+                    id: string;
+                    type: 'image';
+                }[];
+            };
+        };
+        // etc
+    }
+
     interface ProductAttributes {
         name: string;
         description: string;
