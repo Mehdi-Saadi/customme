@@ -9,7 +9,7 @@ const props = defineProps<{
     product: Product;
 }>();
 
-const { addProductToCart, removeProductFromCart } = useProductStore();
+const { addToCart, removeFromCart } = useProductStore();
 
 const countOfProductInShoppingCart = computed(() => {
     const item = useProductStore().shoppingCart[props.product.id];
@@ -34,8 +34,9 @@ const countOfProductInShoppingCart = computed(() => {
         <!-- info -->
         <p
             class="w-full text-sm mt-2.5 truncate"
-            v-html="product.attributes.description"
-        ></p>
+        >
+            {{ product.attributes.description }}
+        </p>
         <!-- price -->
         <span class="w-full font-bold text-xl mt-auto text-end">
             {{ product.attributes.price }} تومان
@@ -46,18 +47,18 @@ const countOfProductInShoppingCart = computed(() => {
             class="w-full flex items-center justify-between border border-rose-750 px-10 mt-3 text-rose-750 text-sm rounded-lg select-none min-h-10"
         >
             <PlusSquareIcon
-                @click="addProductToCart(product)"
+                @click="addToCart(product)"
                 class="size-6 cursor-pointer"
             />
             <span>{{ countOfProductInShoppingCart }} عدد</span>
             <MinosSquareIcon
-                @click="removeProductFromCart(product)"
+                @click="removeFromCart(product)"
                 class="size-6 cursor-pointer"
             />
         </div>
         <button
             v-else
-            @click="addProductToCart(product)"
+            @click="addToCart(product)"
             class="w-full flex items-center justify-center border border-rose-750 mt-3 text-rose-750 text-sm rounded-lg hover:text-rose-950 hover:border-rose-950 transition duration-300 min-h-10"
             type="button"
         >

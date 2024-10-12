@@ -1,6 +1,6 @@
 import { getSortOption } from '@/scripts/product';
-import { defineStore } from 'pinia';
 import { computed, ref, watch } from 'vue';
+import { defineStore } from 'pinia';
 import router from '@/router';
 
 interface ProductImage {
@@ -127,7 +127,7 @@ const useProductStore = defineStore('product', () => {
         fetchProducts();
     };
 
-    const addProductToCart = (product: Product): void => {
+    const addToCart = (product: Product): void => {
         const item: ShoppingCartItem | undefined = shoppingCart.value[product.id];
 
         if (item) {
@@ -137,7 +137,7 @@ const useProductStore = defineStore('product', () => {
         }
     };
 
-    const removeProductFromCart = (product: Product): void => {
+    const removeFromCart = (product: Product): void => {
         const item: ShoppingCartItem | undefined = shoppingCart.value[product.id];
 
         if (!item) {
@@ -172,8 +172,8 @@ const useProductStore = defineStore('product', () => {
         shoppingCart,
         sortButtonIsActive,
         setParametersAndFetchProducts,
-        addProductToCart,
-        removeProductFromCart,
+        addToCart,
+        removeFromCart,
         countOfShoppingCartItems,
     };
 });
