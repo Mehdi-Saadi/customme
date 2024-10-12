@@ -43,7 +43,7 @@ const countOfProductInShoppingCart = computed(() => {
         <!-- shopping cart -->
         <div
             v-if="countOfProductInShoppingCart"
-            class="w-full flex items-center justify-between border border-rose-750 py-2 px-10 mt-3 text-rose-750 text-sm rounded-lg select-none"
+            class="w-full flex items-center justify-between border border-rose-750 px-10 mt-3 text-rose-750 text-sm rounded-lg select-none h-10"
         >
             <PlusSquareIcon
                 @click="addProductToCart(product)"
@@ -58,7 +58,7 @@ const countOfProductInShoppingCart = computed(() => {
         <button
             v-else
             @click="addProductToCart(product)"
-            class="w-full border border-rose-750 py-2 mt-3 text-rose-750 text-sm rounded-lg hover:text-rose-950 hover:border-rose-950 transition duration-300"
+            class="w-full flex items-center justify-center border border-rose-750 mt-3 text-rose-750 text-sm rounded-lg hover:text-rose-950 hover:border-rose-950 transition duration-300 h-10"
             type="button"
         >
             <span> افزودن به سبد خرید </span>
