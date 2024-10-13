@@ -2,6 +2,7 @@
 import HeartIcon from '@/assets/icons/heart-icon.svg';
 import PlusSquareIcon from '@/assets/icons/plus-square-icon.svg';
 import MinosSquareIcon from '@/assets/icons/minus-square-icon.svg';
+import { toPersianNums } from '@/scripts/helpers';
 import useProductStore from '@/stores/product';
 import { computed } from 'vue';
 
@@ -33,7 +34,7 @@ const countOfProductInShoppingCart = computed(() => {
         </div>
         <!-- price -->
         <span class="w-full font-bold text-xl mt-auto text-end">
-            {{ product.attributes.price }} تومان
+            {{ toPersianNums(product.attributes.price) }} تومان
         </span>
         <!-- shopping cart -->
         <div
