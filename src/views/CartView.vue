@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import ArrowLeftIcon from '@/assets/icons/arrow-left-icon.svg';
 import CartItemCard from '@/components/product/CartItemCard.vue';
 import DividerComponent from '@/components/DividerComponent.vue';
 import DollarCircleArrowTopRightIcon from '@/assets/icons/dollar-circle-arrow-top-right-icon.svg';
 import LocationIcon from '@/assets/icons/location-icon.svg';
+import ReceiptDiscountIcon from '@/assets/icons/receipt-discount-icon.svg';
 import SoppingCartRoseIcon from '@/assets/icons/shopping-cart-rose-icon.svg';
 import StoreLayout from '@/layouts/StoreLayout.vue';
 import useProductStore from '@/stores/product';
@@ -46,12 +48,13 @@ const productStore = useProductStore();
                     <!-- prices -->
                     <div class="w-full border rounded-2xl p-6 space-y-4">
                         <!-- discount code -->
-                        <div class="w-full flex flex-col items-center border-b px-2 pt-2 pb-4 space-y-3">
-                            <span class="w-full text-sm">
-                                کد تخفیف
-                            </span>
+                        <div
+                            class="w-full flex flex-col items-center border-b px-2 pt-2 pb-4 space-y-3"
+                        >
+                            <span class="w-full text-sm"> کد تخفیف </span>
                             <p class="text-2xs text-gray-600">
-                                کد تخفیف کد معرف کارت هدیه خود را در زیر وارد کرده و دکمه ثبت رو بزنید تا در صورت داشتن اعتبار به سفارش شما اعمال شود
+                                کد تخفیف کد معرف کارت هدیه خود را در زیر وارد کرده و دکمه ثبت رو
+                                بزنید تا در صورت داشتن اعتبار به سفارش شما اعمال شود
                             </p>
                             <div class="w-full flex items-center space-x-2 rtl:space-x-reverse">
                                 <input
@@ -66,6 +69,43 @@ const productStore = useProductStore();
                                 </button>
                             </div>
                         </div>
+                        <!-- prices -->
+                        <div
+                            class="w-full flex flex-col items-center text-sm text-gray-600 space-y-4 pb-2 border-b"
+                        >
+                            <div class="w-full flex items-center justify-between">
+                                <span> قیمت کالا ها </span>
+                                <span> ۲۴۰,۰۰۰ تومان </span>
+                            </div>
+                            <div class="w-full flex items-center justify-between">
+                                <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                                    <ReceiptDiscountIcon class="size-6" />
+                                    <span> مجموع تخفیف روی کالا ها </span>
+                                </div>
+                                <span> ۲۰,۰۰۰ تومان </span>
+                            </div>
+                            <div class="w-full flex items-center justify-between">
+                                <span> سود شما از خرید </span>
+                                <span> ۳۰,۰۰۰ تومان </span>
+                            </div>
+                            <div class="w-full flex items-center justify-between">
+                                <span> هزینه ازسال </span>
+                                <span> ۵۰,۰۰۰ تومان </span>
+                            </div>
+                        </div>
+                        <div
+                            class="w-full flex items-center justify-between text-base text-gray-700"
+                        >
+                            <span> جمع مبلغ قابل پرداخت </span>
+                            <span> ۲۹۰,۰۰۰ تومان </span>
+                        </div>
+                        <button
+                            class="w-full rounded-lg bg-rose-750 text-white text-sm py-2 flex items-center justify-center space-x-1 rtl:space-x-reverse hover:bg-rose-950 transition duration-200"
+                            type="button"
+                        >
+                            <span>ثبت سفارش</span>
+                            <ArrowLeftIcon class="size-6" />
+                        </button>
                     </div>
                 </div>
             </div>
