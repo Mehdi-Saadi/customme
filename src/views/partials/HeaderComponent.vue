@@ -34,9 +34,9 @@ import { toPersianNums } from '@/scripts/helpers';
                 <span>ورود | ثبت نام</span>
             </NavigationLink>
 
-            <NavigationLink
-                class="relative hover:bg-gray-100"
-                href="#"
+            <RouterLink
+                class="flex items-center space-x-1 rtl:space-x-reverse text-sm py-2 xl:py-3 px-3 xl:px-5 transition duration-200 rounded-lg relative hover:bg-gray-100"
+                :to="{ name: 'product.cart' }"
             >
                 <div
                     class="absolute size-4 xl:top-2 xl:start-4 top-1 start-2 rounded-full bg-[#dcacb1] flex items-center justify-center"
@@ -47,7 +47,7 @@ import { toPersianNums } from '@/scripts/helpers';
                 </div>
                 <ShoppingCartIcon class="size-6" />
                 <span>سبد خرید</span>
-            </NavigationLink>
+            </RouterLink>
         </div>
     </header>
 </template>
