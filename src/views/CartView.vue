@@ -3,6 +3,7 @@ import ArrowLeftIcon from '@/assets/icons/arrow-left-icon.svg';
 import CartItemCard from '@/components/product/CartItemCard.vue';
 import DividerComponent from '@/components/DividerComponent.vue';
 import DollarCircleArrowTopRightIcon from '@/assets/icons/dollar-circle-arrow-top-right-icon.svg';
+import InfoCircleIcon from '@/assets/icons/info-circle-icon.svg';
 import LocationIcon from '@/assets/icons/location-icon.svg';
 import ReceiptDiscountIcon from '@/assets/icons/receipt-discount-icon.svg';
 import SoppingCartRoseIcon from '@/assets/icons/shopping-cart-rose-icon.svg';
@@ -44,7 +45,7 @@ const productStore = useProductStore();
                     />
                 </div>
                 <!-- sidebar -->
-                <div class="col-span-1 flex flex-col items-center px-3">
+                <div class="col-span-1 flex flex-col items-center px-3 space-y-6">
                     <!-- prices -->
                     <div class="w-full border rounded-2xl p-6 space-y-4">
                         <!-- discount code -->
@@ -71,7 +72,7 @@ const productStore = useProductStore();
                         </div>
                         <!-- prices -->
                         <div
-                            class="w-full flex flex-col items-center text-sm text-gray-600 space-y-4 pb-2 border-b"
+                            class="w-full flex flex-col items-center text-sm text-gray-600 space-y-4 pb-4 border-b"
                         >
                             <div class="w-full flex items-center justify-between">
                                 <span> قیمت کالا ها </span>
@@ -106,6 +107,15 @@ const productStore = useProductStore();
                             <span>ثبت سفارش</span>
                             <ArrowLeftIcon class="size-6" />
                         </button>
+                    </div>
+                    <!-- info -->
+                    <div class="w-full border rounded-2xl p-6 space-y-4">
+                        <InfoCircleIcon class="size-6" />
+                        <ul class="w-full space-y-2 text-xs text-gray-600 list-disc ps-4">
+                            <li>ارسال رایگان برای سفارش های بالای ۷۰۰,۰۰۰ تومن.</li>
+                            <li>در صورت اتمام موجودی، کالاها از سبد خرید حذف میشوند.</li>
+                            <li>لطفا در طول مراحل خرید فیلتر شکن خود را خاموش کنید.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
