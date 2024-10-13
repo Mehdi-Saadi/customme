@@ -152,6 +152,16 @@ const useProductStore = defineStore('product', () => {
         }
     };
 
+    const clearFromCart = (product: Product): void => {
+        const item: ShoppingCartItem | undefined = shoppingCart.value[product.id];
+
+        if (!item) {
+            return;
+        }
+
+        delete shoppingCart.value[product.id];
+    };
+
     const countOfShoppingCartItems = computed(() => Object.keys(shoppingCart.value).length);
 
     // fetch products on route change
@@ -175,6 +185,7 @@ const useProductStore = defineStore('product', () => {
         setParametersAndFetchProducts,
         addToCart,
         removeFromCart,
+        clearFromCart,
         countOfShoppingCartItems,
     };
 });
