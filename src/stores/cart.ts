@@ -5,8 +5,12 @@ import { computed, ref } from 'vue';
 
 type ShoppingCart = Record<Product['id'], ShoppingCartItem>;
 
+const localStorageKey = 'cartItems';
+
 const useCartStore = defineStore('cart', () => {
-    const shoppingCart = ref<ShoppingCart>({});
+    const shoppingCart = ref<ShoppingCart>(
+        JSON.parse(localStorage.getItem(localStorageKey) || '{}')
+    );
 
     const addToCart = (product: Product): void => {
         const item: ShoppingCartItem | undefined = shoppingCart.value[product.id];
@@ -19,6 +23,8 @@ const useCartStore = defineStore('cart', () => {
                 count: 1,
             };
         }
+
+        updateLocalStorage();
     };
 
     const removeFromCart = (product: Product): void => {
@@ -33,6 +39,8 @@ const useCartStore = defineStore('cart', () => {
         } else {
             delete shoppingCart.value[product.id];
         }
+
+        updateLocalStorage();
     };
 
     const clearFromCart = (product: Product): void => {
@@ -43,9 +51,14 @@ const useCartStore = defineStore('cart', () => {
         }
 
         delete shoppingCart.value[product.id];
+
+        updateLocalStorage();
     };
 
     const countOfShoppingCartItems = computed(() => Object.keys(shoppingCart.value).length);
+
+    const updateLocalStorage = (): void =>
+        localStorage.setItem(localStorageKey, JSON.stringify(shoppingCart.value));
 
     return {
         shoppingCart,
