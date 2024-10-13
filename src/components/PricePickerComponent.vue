@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { updateProductPageQueries } from '@/scripts/product';
+import { useUpdateProductPageQueries } from '@/composables/useProduct';
 import useProductStore from '@/stores/product';
-import { useRouter } from "vue-router";
+import { useRouter } from 'vue-router';
 import { ref, watch } from 'vue';
 
 const props = defineProps<{
@@ -9,6 +9,7 @@ const props = defineProps<{
     max: number;
 }>();
 
+const { updateProductPageQueries } = useUpdateProductPageQueries();
 const { priceRange } = useProductStore();
 const minValue = ref<number>(priceRange.min);
 const maxValue = ref<number>(priceRange.max);

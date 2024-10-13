@@ -2,10 +2,11 @@
 import FilterButton from '@/components/buttons/FilterButton.vue';
 import ProductFilterDropdown from '@/components/dropdowns/ProductFilterDropdown.vue';
 import ProductPriceFilterDropdown from '@/components/dropdowns/ProductPriceFilterDropdown.vue';
-import { updateProductPageQueries } from '@/scripts/product';
+import { useUpdateProductPageQueries } from '@/composables/useProduct';
 import useProductStore from '@/stores/product';
-import { useRouter } from "vue-router";
+import { useRouter } from 'vue-router';
 
+const { updateProductPageQueries } = useUpdateProductPageQueries();
 const productStore = useProductStore();
 const router = useRouter();
 
@@ -27,9 +28,7 @@ const handleInStockToggle = (): void => {
         <div class="w-full flex items-center justify-between mb-2">
             <span class="text-base"> فیلترها </span>
             <RouterLink
-                v-show="
-                    Object.keys(productStore.filterBy).length || productStore.inStockOnly
-                "
+                v-show="Object.keys(productStore.filterBy).length || productStore.inStockOnly"
                 :to="{
                     name: 'product.list',
                     query: { page: productStore.pageNumber, sort: productStore.sortBy },

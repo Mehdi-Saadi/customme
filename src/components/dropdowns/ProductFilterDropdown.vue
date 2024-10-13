@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import FilterButton from '@/components/buttons/FilterButton.vue';
-import { updateProductPageQueries } from '@/scripts/product';
-import { useRouter } from "vue-router";
+import { useUpdateProductPageQueries } from '@/composables/useProduct';
+import { useRouter } from 'vue-router';
 import isEqual from 'lodash.isequal';
 import { ref, watch } from 'vue';
 
@@ -9,9 +9,10 @@ const props = defineProps<{
     filter: ProductFilter;
 }>();
 
-const router  = useRouter();
+const { updateProductPageQueries } = useUpdateProductPageQueries();
 const showList = ref<boolean>(false);
 const filterName = `filter[options][${props.filter.name}]`;
+const router = useRouter();
 
 const getFiltersFromURL = (): string[] => {
     for (const queryKey in router.currentRoute.value.query) {

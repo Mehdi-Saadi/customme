@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import CircleArrowRightIcon from '@/assets/icons/circle-arrow-right-icon.svg';
 import CircleArrowLeftIcon from '@/assets/icons/circle-arrow-left-icon.svg';
-import { updateProductPageQueries } from '@/scripts/product';
+import { useUpdateProductPageQueries } from '@/composables/useProduct';
 import { VueAwesomePaginate } from 'vue-awesome-paginate';
 import useProductStore from '@/stores/product';
-import { useRouter } from "vue-router";
+import { useRouter } from 'vue-router';
 
 const productStore = useProductStore();
 const router = useRouter();
+
+const { updateProductPageQueries } = useUpdateProductPageQueries();
 
 const handleNavigation = (): void => {
     const query = updateProductPageQueries({ page: productStore.pageNumber });

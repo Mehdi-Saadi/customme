@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { updateProductPageQueries } from '@/scripts/product';
+import { useUpdateProductPageQueries } from '@/composables/useProduct';
 import useProductStore from '@/stores/product';
 
 defineProps<{
@@ -7,6 +7,7 @@ defineProps<{
     title: string;
 }>();
 
+const { updateProductPageQueries } = useUpdateProductPageQueries();
 const { sortButtonIsActive } = useProductStore();
 </script>
 
