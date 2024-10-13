@@ -9,8 +9,7 @@ import router from '@/router';
 const productStore = useProductStore();
 
 const handleNavigation = (): void => {
-    const { pageNumber } = useProductStore();
-    const query = updateProductPageQueries({ page: pageNumber });
+    const query = updateProductPageQueries({ page: productStore.pageNumber });
 
     router.push({
         name: 'product.list',

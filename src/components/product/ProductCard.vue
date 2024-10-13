@@ -10,10 +10,11 @@ const props = defineProps<{
     product: Product;
 }>();
 
-const { addToCart, removeFromCart } = useProductStore();
+const productStore = useProductStore();
+const { addToCart, removeFromCart } = productStore;
 
 const countOfProductInShoppingCart = computed(() => {
-    const item = useProductStore().shoppingCart[props.product.id];
+    const item = productStore.shoppingCart[props.product.id];
     return item ? item.count : 0;
 });
 </script>

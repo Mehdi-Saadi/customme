@@ -10,11 +10,11 @@ import { computed } from 'vue';
 const props = defineProps<{
     cartItem: ShoppingCartItem;
 }>();
-
-const { addToCart, removeFromCart, clearFromCart } = useProductStore();
+const productStore = useProductStore();
+const { addToCart, removeFromCart, clearFromCart } = productStore;
 
 const countOfProductInShoppingCart = computed(() => {
-    const item = useProductStore().shoppingCart[props.cartItem.product.id];
+    const item = productStore.shoppingCart[props.cartItem.product.id];
     return item ? item.count : 0;
 });
 </script>

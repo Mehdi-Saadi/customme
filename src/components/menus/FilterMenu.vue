@@ -13,7 +13,7 @@ const handleInStockToggle = (): void => {
         name: 'product.list',
         query: updateProductPageQueries({
             page: 1,
-            'filter[in_stock]': !useProductStore().inStockOnly,
+            'filter[in_stock]': !productStore.inStockOnly,
         }),
     });
 };
