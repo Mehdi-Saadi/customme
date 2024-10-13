@@ -9,8 +9,26 @@ import ReceiptDiscountIcon from '@/assets/icons/receipt-discount-icon.svg';
 import SoppingCartRoseIcon from '@/assets/icons/shopping-cart-rose-icon.svg';
 import StoreLayout from '@/layouts/StoreLayout.vue';
 import useProductStore from '@/stores/product';
+import { toPersianNums } from '@/scripts/helpers';
+import { computed } from 'vue';
 
 const productStore = useProductStore();
+
+const totalPriceOfProducts = computed(() => {
+    const cartItems = Object.values(productStore.shoppingCart);
+    let price = 0;
+
+    for (const item of cartItems) {
+        price += Number(item.product.attributes.price) * item.count;
+    }
+
+    return price;
+});
+
+const discount = 20;
+const deliveryPrice = 50;
+
+const totalPrice = computed(() => totalPriceOfProducts.value - discount + deliveryPrice);
 </script>
 
 <template>
@@ -76,29 +94,29 @@ const productStore = useProductStore();
                         >
                             <div class="w-full flex items-center justify-between">
                                 <span> قیمت کالا ها </span>
-                                <span> ۲۴۰,۰۰۰ تومان </span>
+                                <span> {{ toPersianNums(totalPriceOfProducts) }} تومان </span>
                             </div>
                             <div class="w-full flex items-center justify-between">
                                 <div class="flex items-center space-x-2 rtl:space-x-reverse">
                                     <ReceiptDiscountIcon class="size-6" />
                                     <span> مجموع تخفیف روی کالا ها </span>
                                 </div>
-                                <span> ۲۰,۰۰۰ تومان </span>
+                                <span> {{ toPersianNums(discount) }} تومان </span>
                             </div>
                             <div class="w-full flex items-center justify-between">
                                 <span> سود شما از خرید </span>
-                                <span> ۳۰,۰۰۰ تومان </span>
+                                <span> {{ toPersianNums(discount) }} تومان </span>
                             </div>
                             <div class="w-full flex items-center justify-between">
-                                <span> هزینه ازسال </span>
-                                <span> ۵۰,۰۰۰ تومان </span>
+                                <span> هزینه ارسال </span>
+                                <span> {{ toPersianNums(deliveryPrice) }} تومان </span>
                             </div>
                         </div>
                         <div
                             class="w-full flex items-center justify-between text-base text-gray-700"
                         >
                             <span> جمع مبلغ قابل پرداخت </span>
-                            <span> ۲۹۰,۰۰۰ تومان </span>
+                            <span> {{ toPersianNums(totalPrice) }} تومان </span>
                         </div>
                         <button
                             class="w-full rounded-lg bg-rose-750 text-white text-sm py-2 flex items-center justify-center space-x-1 rtl:space-x-reverse hover:bg-rose-950 transition duration-200"
