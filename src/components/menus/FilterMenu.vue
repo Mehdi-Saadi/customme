@@ -6,6 +6,8 @@ import { updateProductPageQueries } from '@/scripts/product';
 import useProductStore from '@/stores/product';
 import router from '@/router';
 
+const productStore = useProductStore();
+
 const handleInStockToggle = (): void => {
     router.push({
         name: 'product.list',
@@ -25,11 +27,11 @@ const handleInStockToggle = (): void => {
             <span class="text-base"> فیلترها </span>
             <RouterLink
                 v-show="
-                    Object.keys(useProductStore().filterBy).length || useProductStore().inStockOnly
+                    Object.keys(productStore.filterBy).length || productStore.inStockOnly
                 "
                 :to="{
                     name: 'product.list',
-                    query: { page: useProductStore().pageNumber, sort: useProductStore().sortBy },
+                    query: { page: productStore.pageNumber, sort: productStore.sortBy },
                 }"
                 class="text-rose-750 text-2xs font-bold"
             >
@@ -37,13 +39,13 @@ const handleInStockToggle = (): void => {
             </RouterLink>
         </div>
         <ProductFilterDropdown
-            v-for="filter in useProductStore().productFilters"
+            v-for="filter in productStore.productFilters"
             :key="filter.id"
             :filter="filter"
         />
         <FilterButton
             @click="handleInStockToggle"
-            :toggle-checked="useProductStore().inStockOnly"
+            :toggle-checked="productStore.inStockOnly"
             title="فقط کالاهای موجود"
             icon="toggle"
         />

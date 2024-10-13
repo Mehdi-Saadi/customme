@@ -2,8 +2,8 @@
 import HeartIcon from '@/assets/icons/heart-icon.svg';
 import PlusSquareIcon from '@/assets/icons/plus-square-icon.svg';
 import MinosSquareIcon from '@/assets/icons/minus-square-icon.svg';
-import { toPersianNums } from '@/scripts/helpers';
 import useProductStore from '@/stores/product';
+import { toPersianNums } from '@/scripts/helpers';
 import { computed } from 'vue';
 
 const props = defineProps<{

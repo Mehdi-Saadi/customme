@@ -6,9 +6,9 @@ import SortMenu from '@/components/menus/SortMenu.vue';
 import StoreLayout from '@/layouts/StoreLayout.vue';
 import useProductStore from '@/stores/product';
 
-const { setParametersAndFetchProducts } = useProductStore();
+const productStore = useProductStore();
 
-setParametersAndFetchProducts();
+productStore.setParametersAndFetchProducts();
 </script>
 
 <template>
@@ -17,10 +17,10 @@ setParametersAndFetchProducts();
         <div class="w-full flex flex-col ps-6 pe-4">
             <SortMenu />
             <!-- content -->
-            <template v-if="useProductStore().products.length">
+            <template v-if="productStore.products.length">
                 <div class="w-full grid lg:grid-cols-3 grid-cols-2 gap-5 mt-6">
                     <ProductCard
-                        v-for="product in useProductStore().products"
+                        v-for="product in productStore.products"
                         :key="product.id"
                         :product="product"
                     />

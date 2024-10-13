@@ -7,6 +7,8 @@ import SearchIcon from '@/assets/icons/search-icon.svg';
 import ShoppingCartIcon from '@/assets/icons/shopping-cart-icon.svg';
 import useProductStore from '@/stores/product';
 import { toPersianNums } from '@/scripts/helpers';
+
+const productStore = useProductStore();
 </script>
 
 <template>
@@ -42,7 +44,7 @@ import { toPersianNums } from '@/scripts/helpers';
                     class="absolute size-4 xl:top-2 xl:start-4 top-1 start-2 rounded-full bg-[#dcacb1] flex items-center justify-center"
                 >
                     <span class="text-xs">
-                        {{ toPersianNums(useProductStore().countOfShoppingCartItems) }}
+                        {{ toPersianNums(productStore.countOfShoppingCartItems) }}
                     </span>
                 </div>
                 <ShoppingCartIcon class="size-6" />

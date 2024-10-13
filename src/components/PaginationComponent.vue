@@ -6,6 +6,8 @@ import { VueAwesomePaginate } from 'vue-awesome-paginate';
 import useProductStore from '@/stores/product';
 import router from '@/router';
 
+const productStore = useProductStore();
+
 const handleNavigation = (): void => {
     const { pageNumber } = useProductStore();
     const query = updateProductPageQueries({ page: pageNumber });
@@ -20,10 +22,10 @@ const handleNavigation = (): void => {
 <template>
     <div class="w-full flex items-center justify-center mt-10">
         <VueAwesomePaginate
-            :total-items="useProductStore().totalPages"
+            :total-items="productStore.totalPages"
             :items-per-page="1"
             :max-pages-shown="3"
-            v-model="useProductStore().pageNumber"
+            v-model="productStore.pageNumber"
             @click="handleNavigation()"
         >
             <template #prev-button>
