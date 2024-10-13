@@ -21,13 +21,13 @@ const productStore = useProductStore();
                     <SoppingCartRoseIcon class="size-6" />
                     <span>سبد خرید</span>
                 </div>
-                <DividerComponent class="opacity-50" />
-                <div class="flex flex-col items-center justify-center opacity-50">
+                <DividerComponent class="opacity-40" />
+                <div class="flex flex-col items-center justify-center opacity-40">
                     <LocationIcon class="size-6" />
                     <span>اطلاعات آدرس</span>
                 </div>
-                <DividerComponent class="opacity-50" />
-                <div class="flex flex-col items-center justify-center opacity-50">
+                <DividerComponent class="opacity-40" />
+                <div class="flex flex-col items-center justify-center opacity-40">
                     <DollarCircleArrowTopRightIcon class="size-6" />
                     <span>پرداخت</span>
                 </div>
