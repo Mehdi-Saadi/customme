@@ -2,6 +2,7 @@
 import { useUpdateProductPageQueries } from '@/composables/useProduct';
 import useProductStore from '@/stores/product';
 import { useRouter } from 'vue-router';
+import { debounce } from 'lodash';
 import { ref, watch } from 'vue';
 
 const props = defineProps<{
@@ -30,14 +31,14 @@ const handleInput = (event: KeyboardEvent, variable: 'min' | 'max'): void => {
         calculatedValue < props.min || calculatedValue > props.max ? value.value : calculatedValue;
 };
 
-const updateRoute = (): void => {
+const updateRoute = debounce((): void => {
     const query = updateProductPageQueries({
         page: 1,
         'filter[price]': `${minValue.value},${maxValue.value}`,
     });
 
     router.push({ name: 'product.list', query: query });
-};
+}, 1000);
 
 watch(minValue, updateRoute);
 watch(maxValue, updateRoute);
