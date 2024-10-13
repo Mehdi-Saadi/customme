@@ -41,9 +41,9 @@ import { toPersianNums } from '@/scripts/helpers';
                 <div
                     class="absolute size-4 xl:top-2 xl:start-4 top-1 start-2 rounded-full bg-[#dcacb1] flex items-center justify-center"
                 >
-                    <span>{{
-                        toPersianNums(String(useProductStore().countOfShoppingCartItems))
-                    }}</span>
+                    <span>
+                        {{ toPersianNums(useProductStore().countOfShoppingCartItems) }}
+                    </span>
                 </div>
                 <ShoppingCartIcon class="size-6" />
                 <span>سبد خرید</span>
