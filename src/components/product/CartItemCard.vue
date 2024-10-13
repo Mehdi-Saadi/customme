@@ -4,18 +4,18 @@ import MinusSmallIcon from '@/assets/icons/minus-small-icon.svg';
 import PlusSmallIcon from '@/assets/icons/plus-small-icon.svg';
 import TruckFastIcon from '@/assets/icons/truck-fast-icon.svg';
 import type { ShoppingCartItem } from '@/types/product';
-import useProductStore from '@/stores/product';
+import useCartStore from '@/stores/cart';
 import { toPersianNums } from '@/scripts/helpers';
 import { computed } from 'vue';
 
 const props = defineProps<{
     cartItem: ShoppingCartItem;
 }>();
-const productStore = useProductStore();
-const { addToCart, removeFromCart, clearFromCart } = productStore;
+const cartStore = useCartStore();
+const { addToCart, removeFromCart, clearFromCart } = cartStore;
 
 const countOfProductInShoppingCart = computed(() => {
-    const item = productStore.shoppingCart[props.cartItem.product.id];
+    const item = cartStore.shoppingCart[props.cartItem.product.id];
     return item ? item.count : 0;
 });
 </script>

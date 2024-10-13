@@ -8,14 +8,14 @@ import LocationIcon from '@/assets/icons/location-icon.svg';
 import ReceiptDiscountIcon from '@/assets/icons/receipt-discount-icon.svg';
 import SoppingCartRoseIcon from '@/assets/icons/shopping-cart-rose-icon.svg';
 import StoreLayout from '@/layouts/StoreLayout.vue';
-import useProductStore from '@/stores/product';
+import useCartStore from '@/stores/cart';
 import { toPersianNums } from '@/scripts/helpers';
 import { computed } from 'vue';
 
-const productStore = useProductStore();
+const cartStore = useCartStore();
 
 const totalPriceOfProducts = computed(() => {
-    const cartItems = Object.values(productStore.shoppingCart);
+    const cartItems = Object.values(cartStore.shoppingCart);
     let price = 0;
 
     for (const item of cartItems) {
@@ -57,7 +57,7 @@ const totalPrice = computed(() => totalPriceOfProducts.value - discount + delive
                 <div class="col-span-2 flex flex-col space-y-6 px-3">
                     <h3 class="text-base py-3 border-b">سبد خرید</h3>
                     <CartItemCard
-                        v-for="cartItem in productStore.shoppingCart"
+                        v-for="cartItem in cartStore.shoppingCart"
                         :key="cartItem.product.id"
                         :cart-item="cartItem"
                     />

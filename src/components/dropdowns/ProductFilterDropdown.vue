@@ -4,7 +4,7 @@ import { useUpdateProductPageQueries } from '@/composables/useProduct';
 import type { ProductFilter } from '@/types/product';
 import { useRouter } from 'vue-router';
 import { ref, watch } from 'vue';
-import { isEqual } from "lodash";
+import { isEqual } from 'lodash';
 
 const props = defineProps<{
     filter: ProductFilter;

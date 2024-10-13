@@ -5,10 +5,10 @@ import LoginIcon from '@/assets/icons/login-icon.svg';
 import NavigationLink from '@/components/buttons/NavigationLink.vue';
 import SearchIcon from '@/assets/icons/search-icon.svg';
 import ShoppingCartIcon from '@/assets/icons/shopping-cart-icon.svg';
-import useProductStore from '@/stores/product';
+import useCartStore from '@/stores/cart';
 import { toPersianNums } from '@/scripts/helpers';
 
-const productStore = useProductStore();
+const cartStore = useCartStore();
 </script>
 
 <template>
@@ -44,7 +44,7 @@ const productStore = useProductStore();
                     class="absolute size-4 xl:top-2 xl:start-4 top-1 start-2 rounded-full bg-[#dcacb1] flex items-center justify-center"
                 >
                     <span class="text-xs">
-                        {{ toPersianNums(productStore.countOfShoppingCartItems) }}
+                        {{ toPersianNums(cartStore.countOfShoppingCartItems) }}
                     </span>
                 </div>
                 <ShoppingCartIcon class="size-6" />

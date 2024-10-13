@@ -1,9 +1,8 @@
-import type { Product, ProductFilter, ShoppingCartItem, SortProductsBy } from '@/types/product';
+import type { Product, ProductFilter, SortProductsBy } from '@/types/product';
 import { getSortOption } from '@/scripts/product';
-import { computed, ref, watch } from 'vue';
-import { defineStore } from 'pinia';
-import cloneDeep from 'lodash/cloneDeep';
 import { useRouter } from 'vue-router';
+import { defineStore } from 'pinia';
+import { ref, watch } from 'vue';
 
 interface ProductImage {
     attributes: {
@@ -16,7 +15,6 @@ interface ProductImage {
 }
 
 type FilterProductsBy = Record<string, string>;
-type ShoppingCart = Record<Product['id'], ShoppingCartItem>;
 
 const useProductStore = defineStore('product', () => {
     const pageNumber = ref<number>(0);
@@ -27,7 +25,6 @@ const useProductStore = defineStore('product', () => {
     const totalPages = ref<number>(0);
     const products = ref<Product[]>([]);
     const productFilters = ref<ProductFilter[]>([]);
-    const shoppingCart = ref<ShoppingCart>({});
 
     const router = useRouter();
 
@@ -128,45 +125,6 @@ const useProductStore = defineStore('product', () => {
         fetchProducts();
     };
 
-    const addToCart = (product: Product): void => {
-        const item: ShoppingCartItem | undefined = shoppingCart.value[product.id];
-
-        if (item) {
-            item.count++;
-        } else {
-            shoppingCart.value[product.id] = {
-                product: cloneDeep(product),
-                count: 1,
-            };
-        }
-    };
-
-    const removeFromCart = (product: Product): void => {
-        const item: ShoppingCartItem | undefined = shoppingCart.value[product.id];
-
-        if (!item) {
-            return;
-        }
-
-        if (item.count > 1) {
-            item.count--;
-        } else {
-            delete shoppingCart.value[product.id];
-        }
-    };
-
-    const clearFromCart = (product: Product): void => {
-        const item: ShoppingCartItem | undefined = shoppingCart.value[product.id];
-
-        if (!item) {
-            return;
-        }
-
-        delete shoppingCart.value[product.id];
-    };
-
-    const countOfShoppingCartItems = computed(() => Object.keys(shoppingCart.value).length);
-
     // fetch products on route change
     watch(router.currentRoute, () => {
         if (router.currentRoute.value.name === 'product.list') {
@@ -183,13 +141,8 @@ const useProductStore = defineStore('product', () => {
         totalPages,
         products,
         productFilters,
-        shoppingCart,
         sortButtonIsActive,
         setParametersAndFetchProducts,
-        addToCart,
-        removeFromCart,
-        clearFromCart,
-        countOfShoppingCartItems,
     };
 });
 

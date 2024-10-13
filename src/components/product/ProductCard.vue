@@ -2,7 +2,7 @@
 import HeartIcon from '@/assets/icons/heart-icon.svg';
 import PlusSquareIcon from '@/assets/icons/plus-square-icon.svg';
 import MinosSquareIcon from '@/assets/icons/minus-square-icon.svg';
-import useProductStore from '@/stores/product';
+import useCartStore from '@/stores/cart';
 import { toPersianNums } from '@/scripts/helpers';
 import type { Product } from '@/types/product';
 import { computed } from 'vue';
@@ -11,11 +11,11 @@ const props = defineProps<{
     product: Product;
 }>();
 
-const productStore = useProductStore();
-const { addToCart, removeFromCart } = productStore;
+const cartStore = useCartStore();
+const { addToCart, removeFromCart } = cartStore;
 
 const countOfProductInShoppingCart = computed(() => {
-    const item = productStore.shoppingCart[props.product.id];
+    const item = cartStore.shoppingCart[props.product.id];
     return item ? item.count : 0;
 });
 </script>
