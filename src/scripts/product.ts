@@ -1,3 +1,5 @@
+import type { SortProductsBy } from '@/types/product';
+
 export const getSortOption = (sort: any): SortProductsBy => {
     switch (sort) {
         case '-created_at':

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useUpdateProductPageQueries } from '@/composables/useProduct';
+import type { SortProductsBy } from '@/types/product';
 import useProductStore from '@/stores/product';
 
 defineProps<{

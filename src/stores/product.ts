@@ -1,3 +1,4 @@
+import type { Product, ProductFilter, ShoppingCartItem, SortProductsBy } from '@/types/product';
 import { getSortOption } from '@/scripts/product';
 import { computed, ref, watch } from 'vue';
 import { defineStore } from 'pinia';

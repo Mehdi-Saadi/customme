@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import FilterButton from '@/components/buttons/FilterButton.vue';
 import { useUpdateProductPageQueries } from '@/composables/useProduct';
+import type { ProductFilter } from '@/types/product';
 import { useRouter } from 'vue-router';
 import isEqual from 'lodash.isequal';
 import { ref, watch } from 'vue';

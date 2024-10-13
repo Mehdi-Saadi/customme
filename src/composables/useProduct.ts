@@ -1,3 +1,4 @@
+import type { SortProductsBy } from '@/types/product';
 import { useRouter } from 'vue-router';
 
 interface ProductPageQuery {

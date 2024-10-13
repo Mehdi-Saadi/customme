@@ -4,6 +4,7 @@ import PlusSquareIcon from '@/assets/icons/plus-square-icon.svg';
 import MinosSquareIcon from '@/assets/icons/minus-square-icon.svg';
 import useProductStore from '@/stores/product';
 import { toPersianNums } from '@/scripts/helpers';
+import type { Product } from '@/types/product';
 import { computed } from 'vue';
 
 const props = defineProps<{

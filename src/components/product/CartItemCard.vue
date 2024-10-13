@@ -3,6 +3,7 @@ import CloseSquareIcon from '@/assets/icons/close-square-icon.svg';
 import MinusSmallIcon from '@/assets/icons/minus-small-icon.svg';
 import PlusSmallIcon from '@/assets/icons/plus-small-icon.svg';
 import TruckFastIcon from '@/assets/icons/truck-fast-icon.svg';
+import type { ShoppingCartItem } from '@/types/product';
 import useProductStore from '@/stores/product';
 import { toPersianNums } from '@/scripts/helpers';
 import { computed } from 'vue';
