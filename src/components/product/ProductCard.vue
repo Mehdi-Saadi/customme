@@ -18,7 +18,7 @@ const countOfProductInShoppingCart = computed(() => {
 </script>
 
 <template>
-    <div class="border border-gray-300 rounded-2xl w-full h-[30rem] p-4 flex flex-col items-center">
+    <div class="border border-gray-300 rounded-2xl w-full h-[28rem] p-4 flex flex-col items-center">
         <!-- img -->
         <img
             :src="product.attributes.image"
@@ -31,12 +31,6 @@ const countOfProductInShoppingCart = computed(() => {
             <span class="max-w-52 font-bold text-lg truncate">{{ product.attributes.name }}</span>
             <HeartIcon class="size-6" />
         </div>
-        <!-- info -->
-        <p
-            class="w-full text-sm mt-2.5 truncate"
-        >
-            {{ product.attributes.description }}
-        </p>
         <!-- price -->
         <span class="w-full font-bold text-xl mt-auto text-end">
             {{ product.attributes.price }} تومان
