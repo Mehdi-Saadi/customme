@@ -34,6 +34,11 @@ declare global {
             presentation: string;
         }[];
     }
+
+    interface ShoppingCartItem {
+        product: Product;
+        count: number;
+    }
 }
 
 export {};

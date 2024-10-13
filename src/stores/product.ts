@@ -1,6 +1,7 @@
 import { getSortOption } from '@/scripts/product';
 import { computed, ref, watch } from 'vue';
 import { defineStore } from 'pinia';
+import cloneDeep from 'lodash/cloneDeep';
 import router from '@/router';
 
 interface ProductImage {
@@ -14,9 +15,6 @@ interface ProductImage {
 }
 
 type FilterProductsBy = Record<string, string>;
-interface ShoppingCartItem {
-    count: number;
-}
 type ShoppingCart = Record<Product['id'], ShoppingCartItem>;
 
 const useProductStore = defineStore('product', () => {
@@ -133,7 +131,10 @@ const useProductStore = defineStore('product', () => {
         if (item) {
             item.count++;
         } else {
-            shoppingCart.value[product.id] = { count: 1 };
+            shoppingCart.value[product.id] = {
+                product: cloneDeep(product),
+                count: 1,
+            };
         }
     };
 
