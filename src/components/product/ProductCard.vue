@@ -45,7 +45,7 @@ const countOfProductInShoppingCart = computed(() => {
                 @click="addToCart(product)"
                 class="size-6 cursor-pointer"
             />
-            <span>{{ countOfProductInShoppingCart }} عدد</span>
+            <span>{{ toPersianNums(countOfProductInShoppingCart) }} عدد</span>
             <MinosSquareIcon
                 @click="removeFromCart(product)"
                 class="size-6 cursor-pointer"
