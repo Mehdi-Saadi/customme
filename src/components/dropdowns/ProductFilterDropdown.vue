@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import FilterButton from '@/components/buttons/FilterButton.vue';
 import { updateProductPageQueries } from '@/scripts/product';
+import { useRouter } from "vue-router";
 import isEqual from 'lodash.isequal';
 import { ref, watch } from 'vue';
-import router from '@/router';
 
 const props = defineProps<{
     filter: ProductFilter;
 }>();
 
+const router  = useRouter();
 const showList = ref<boolean>(false);
 const filterName = `filter[options][${props.filter.name}]`;
 

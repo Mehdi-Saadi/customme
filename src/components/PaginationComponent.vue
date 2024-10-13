@@ -4,9 +4,10 @@ import CircleArrowLeftIcon from '@/assets/icons/circle-arrow-left-icon.svg';
 import { updateProductPageQueries } from '@/scripts/product';
 import { VueAwesomePaginate } from 'vue-awesome-paginate';
 import useProductStore from '@/stores/product';
-import router from '@/router';
+import { useRouter } from "vue-router";
 
 const productStore = useProductStore();
+const router = useRouter();
 
 const handleNavigation = (): void => {
     const query = updateProductPageQueries({ page: productStore.pageNumber });

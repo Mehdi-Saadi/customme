@@ -4,9 +4,10 @@ import ProductFilterDropdown from '@/components/dropdowns/ProductFilterDropdown.
 import ProductPriceFilterDropdown from '@/components/dropdowns/ProductPriceFilterDropdown.vue';
 import { updateProductPageQueries } from '@/scripts/product';
 import useProductStore from '@/stores/product';
-import router from '@/router';
+import { useRouter } from "vue-router";
 
 const productStore = useProductStore();
+const router = useRouter();
 
 const handleInStockToggle = (): void => {
     router.push({

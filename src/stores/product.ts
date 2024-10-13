@@ -2,7 +2,7 @@ import { getSortOption } from '@/scripts/product';
 import { computed, ref, watch } from 'vue';
 import { defineStore } from 'pinia';
 import cloneDeep from 'lodash/cloneDeep';
-import router from '@/router';
+import { useRouter } from "vue-router";
 
 interface ProductImage {
     attributes: {
@@ -27,6 +27,8 @@ const useProductStore = defineStore('product', () => {
     const products = ref<Product[]>([]);
     const productFilters = ref<ProductFilter[]>([]);
     const shoppingCart = ref<ShoppingCart>({});
+
+    const router = useRouter();
 
     const fetchProducts = async (): Promise<void> => {
         if (pageNumber.value <= 0) {
