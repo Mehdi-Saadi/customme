@@ -60,12 +60,24 @@ const useCartStore = defineStore('cart', () => {
     const updateLocalStorage = (): void =>
         localStorage.setItem(localStorageKey, JSON.stringify(shoppingCart.value));
 
+    const totalPriceOfProducts = computed(() => {
+        const cartItems = Object.values(shoppingCart.value);
+        let price = 0;
+
+        for (const item of cartItems) {
+            price += Number(item.product.attributes.price) * item.count;
+        }
+
+        return price;
+    });
+
     return {
         shoppingCart,
         addToCart,
         removeFromCart,
         clearFromCart,
         countOfShoppingCartItems,
+        totalPriceOfProducts,
     };
 });
 

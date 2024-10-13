@@ -14,21 +14,10 @@ import { computed } from 'vue';
 
 const cartStore = useCartStore();
 
-const totalPriceOfProducts = computed(() => {
-    const cartItems = Object.values(cartStore.shoppingCart);
-    let price = 0;
-
-    for (const item of cartItems) {
-        price += Number(item.product.attributes.price) * item.count;
-    }
-
-    return price;
-});
-
 const discount = 20;
 const deliveryPrice = 50;
 
-const totalPrice = computed(() => totalPriceOfProducts.value - discount + deliveryPrice);
+const totalPrice = computed(() => cartStore.totalPriceOfProducts - discount + deliveryPrice);
 </script>
 
 <template>
@@ -94,7 +83,7 @@ const totalPrice = computed(() => totalPriceOfProducts.value - discount + delive
                         >
                             <div class="w-full flex items-center justify-between">
                                 <span> قیمت کالا ها </span>
-                                <span> {{ toPersianNums(totalPriceOfProducts) }} تومان </span>
+                                <span> {{ toPersianNums(cartStore.totalPriceOfProducts) }} تومان </span>
                             </div>
                             <div class="w-full flex items-center justify-between">
                                 <div class="flex items-center space-x-2 rtl:space-x-reverse">
